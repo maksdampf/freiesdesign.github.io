@@ -1,0 +1,44 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "Duale Lizenz",
+   "children": [
+    {
+     "name": "cluster",
+     "children": [
+      {"name": "AgglomerativeCluster", "size": 3938},
+      {"name": "CommunityStructure", "size": 3812},
+      {"name": "HierarchicalCluster", "size": 6714},
+      {"name": "MergeEdge", "size": 743}
+     ]
+    },
+    {
+     "name": "Open Source",
+     "children": [
+
+      {"name": "Github", "size": 5731},
+      {"name": "Mediagoblin", "size": 7840},
+      {"name": "ShortestPaths", "size": 5914},
+      {"name": "SpanningTree", "size": 3416},
+	  {"name": "Open Source Lizenz", "size": 8000}
+     ]
+    },
+	{
+     "name": "frei (open / reserved)",
+     "children": [
+      {"name": "frei (open / reserved)", "size": 8000},
+      {"name": "Mediagoblin", "size": 5731},
+      {"name": "Gitlab", "size": 7840}
+     ]
+    },
+    {
+     "name": "rights reserved", "size": 8000,
+     "children": [
+      {"name": "Grabcad", "size": 7074}
+     ]
+    }
+   ]
+  }
+ ]
+};

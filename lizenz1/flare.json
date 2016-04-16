@@ -1,0 +1,51 @@
+{
+ "name": "Werk Veröffentlichung",
+ "children": [
+  {
+   "name": "Namensnennung",
+	"children": [
+	{
+     "name": "nicht kommerziell",
+     "children": [
+      {"name": "CC-BY-NC", "size": 7840},
+	  {"name": "keine Derivate",
+		   "children":[
+			{"name": "CC-BY-NC-ND", "size": 7840}
+		   ]
+	  }
+     ]
+    },
+	{
+     "name": "keine Derivate",
+     "children": [
+      {"name": "CC-BY-ND", "size": 7840}
+     ]
+    },
+	{"name": "CC-BY","size": 3938},
+	{
+     "name": "Copyleft",
+     "children": [
+	    {
+		 "name": "nicht kommerziell",
+		 "children": [
+		  {"name": "CC-BY-SA-NC", "size": 8000}
+		 ]
+		},
+		{"name": "CC-BY-SA", "size": 5731},
+		{"name": "Free Art License", "size": 7840},
+		{"name": "AgainstDRM", "size": 5914},
+		{"name": "DesignScienceLicense", "size": 5914},
+		{"name": "CERN OHL", "size": 5914}
+	  
+     ]
+    }
+   ]
+  },
+  {
+	"name": "keine Namensnennung",
+	"children": [
+		{"name": "Gemeimeinfrei / CC-0", "size": 3938}
+		]
+	}
+ ]
+}

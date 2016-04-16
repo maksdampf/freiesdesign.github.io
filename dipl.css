@@ -1,0 +1,180 @@
+body{
+  font-family: Helvetica, sans-serif;
+  font-size: 100%;
+  line-height:1.8em;
+  margin: auto; 
+}
+
+#text{
+  font-family: Helvetica, sans-serif;
+  font-size: 100%;
+  line-height:1.8em;
+  margin: auto; 
+  width: 40em;
+}
+
+.back-to-top {
+ color: #F90B6D; 
+ font-family: 'Open Sans', sans-serif; 
+ position: fixed;
+ bottom:1em;
+ right:1em;
+ padding:1em;
+}
+
+
+
+h1 { 
+	color: #F90B6D; 
+	font-family: 'Open Sans', sans-serif; 
+	font-size: 6em; 
+	font-weight: lighter; 
+	line-height: 0.8em; 
+	margin: 2em 0em 0.8em 0em; 
+}
+
+h2 { 
+	color: #F90B6D; 
+	font-family: 'Open Sans', sans-serif; 
+	font-size: 6em; 
+	font-weight: lighter; 
+	line-height: 0.8em; 
+	margin: 2em 0em 0.8em 0em; 
+}
+
+h3 { 
+	color: #F90B6D; 
+	font-family: 'Open Sans', sans-serif; 
+	font-size: 2em; 
+	font-weight: lighter; 
+	line-height: 1.5em; 
+	margin: 5em 0em 1em 0em;
+}
+	
+h4 { 
+	color: #000000; 
+	font-family: 'Open Sans', sans-serif; 
+	font-size: 1.5em; 
+	font-weight: lighter;  
+	margin: 2em 0em 1em 2em; 
+}
+
+h5 { 
+
+	font-family: 'Open Sans', sans-serif; 
+	font-size: 1.2em; 
+	font-weight: lighter; 
+	line-height: 1.5em; 	
+	margin: 2em 0em 1em 0em;
+}
+
+h6 { 
+	font-family: 'Helvetica', sans-serif; 
+	font-size: 1em; 
+	margin: 1em 0em 1em 0em;
+	text-align:right;
+}
+  
+
+div {
+ /*   padding-left: 4.5em; *//
+}
+
+
+a { background: #fff; 
+	color: #222; 
+	text-decoration: none; }
+
+
+a:hover { background: #F90B6D; color: #eee; text-decoration: none; }
+
+.tooltip{
+    display: inline;
+}
+
+.tooltip:hover:after{
+    background: #F90B6D;
+    color: #fff;
+    content: attr(title);
+    z-index: 98;
+}
+
+.zitatnummer { 
+	font-family: 'Helvetica', sans-serif; 
+	font-size: 1em; 
+	margin: 0em 1em 0em 1em;
+	font-weight: bold;
+	vertical-align: super; 
+}
+
+.zitattext {
+	font-family: 'Helvetica', sans-serif; 
+	font-size: 1em; 
+	margin: 0em 1em 0em 1em;
+	font-weight: bold;
+}
+
+#wortwolke {
+margin: 0 auto;
+display:block
+}
+
+#gallery {
+		margin: auto;
+		width: 1400px;
+		height: 700px;
+		border: none;
+ 		display: block;
+	}
+	
+#plattform1 {
+		width: 800px;
+		height: 500px;
+		border: none;
+/* 		display: block; */
+	}
+	
+	
+#plattform2 {
+		width: 800px;
+		height: 600px;
+		border: none;
+/* 		display: block; */
+	}
+	
+	
+#lizenz1 {
+		width: 800px;
+		height: 600px;
+		border: none;
+/* 		display: block; */
+	}
+	
+
+#plattformtab {
+
+		margin: auto;
+		width: 1200px;
+		height: 80em;
+		border: none;
+ 		display: block;
+	}
+	
+#lizenztab {
+
+		margin: auto;
+		width: 1200px;
+		height: 90em;
+		border: none;
+ 		display: block;
+}
+	
+	
+#quellentab {
+
+		margin: auto;
+		width: 1200px;
+		height: 410em;
+		border: none;
+ 		display: block;
+}

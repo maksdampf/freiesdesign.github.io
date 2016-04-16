@@ -1,0 +1,2779 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="Autor" content=
+    "David Burkhardt">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href=
+    "https://dl.dropboxusercontent.com/u/27957830/diphtml/dipl.css">
+    <title>
+      Offene Entwurfsplattformen für Designer
+    </title><!--js zum Ausklappen von Kapiteln-->
+
+    <script language="javascript" type="text/javascript">
+
+    function toggle(control)
+    {
+                var elem = document.getElementById(control);
+                if(elem.style.display == "none")
+                {
+                        elem.style.display = "block";
+                }
+                else
+                {
+                        elem.style.display = "none";
+                }
+    }
+        
+
+    </script>
+
+	
+	
+	
+	
+    <!--jquery script zur Erstellung eines automatischen Inhaltsverzeichnisses-->
+
+    <script src=
+    "jquery-2.2.0.min.js"
+    type="text/javascript">
+</script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+            $("#toc").append('<h3>Inhalt:<\/h3>')
+            $("h2").each(function(i) {
+                var current = $(this);
+                current.attr("id", "title" + i);
+
+                $("#toc").append("<a id='link" + i + "' href='#title" + i + "' title='" + current.attr("tagName") + "'>" + current.html() + "<\/a><br>");
+            });
+        });
+    </script>
+	
+	
+	<!--jquery script zum wieder nach oben scrollen-->
+
+    <script type="text/javascript" src=
+    "https://dl.dropboxusercontent.com/u/27957830/diphtml/jquery-2.2.0.min.js">
+</script>
+    <script type="text/javascript">
+            $(document).ready(function(){
+
+                        // Der Button wird mit JavaScript erzeugt und vor dem Ende des body eingebunden.
+                        var back_to_top_button = ['<a href="#top" class="back-to-top">Nach oben<\/a>'].join("");
+                        $("body").append(back_to_top_button)
+
+                        // Der Button wird ausgeblendet
+                        $(".back-to-top").hide();
+
+                        // Funktion für das Scroll-Verhalten
+                        $(function () {
+                                $(window).scroll(function () {
+                                        if ($(this).scrollTop() > 1400) { // Wenn 100 Pixel gescrolled wurde
+                                                $('.back-to-top').fadeIn();
+                                        } else {
+                                                $('.back-to-top').fadeOut();
+                                        }
+                                });
+
+                                $('.back-to-top').click(function () { // Klick auf den Button
+                                        $('body,html').animate({
+                                                scrollTop: 1400
+                                        }, 800);
+                                        return false;
+                                });
+                        });
+
+                });
+    </script>
+  </head>
+  <body>
+    <div id="text">
+      <h1>
+        Offene Entwurfs-Plattformen für Designer
+      </h1>
+      <h3>
+        Eine Analyse mit praktischen Empfehlungen zur Technik der
+        Selbstorganisation von Produktentwicklung im Netz
+      </h3>
+      <h5>
+        Arbeitstitel: Untersuchung kollaborativer Entwürfe in offenen
+        Plattformen
+      </h5>
+      <h5>
+        Eingereicht an der Hochschule für bildende Künste Hamburg (HfbK) im
+        Studienschwerpunkt Design im WiSe 2015/2016
+      </h5>
+      <h5>
+        zur Erlangung des akademischen Grades Diplom
+      </h5>
+      <h5>
+        von: David Burkhardt<br>
+        geboren: 18.03.1986 in Hamburg
+      </h5>
+      <div id="toc"></div>
+      <h2>
+        Einleitung
+      </h2>
+      <h3>
+        Motivation
+      </h3>Ich möchte in dieser Arbeit den Austausch, die Dokumentation und
+      die Reproduktion von Entwürfen diskutieren. Es geht um den Umgang mit
+      Immaterialgut von Design im Digitalzeitalter und das Verhältnis zwischen
+      Designer (Urheber), Produzenten und Konsumenten. Und um gemeinschaftliche
+      Entwicklungsprozesse.
+      <p>
+        Meine Arbeit soll dazu einladen, sich mehr mit dem Teilen von
+        Entwürfen auseinander zu setzen. Wie funktionieren Gemeinfreiheit,
+        Urheberrecht und Open Source Lizenzen, wie funktioniert globales
+        Design? Was ist der Entwicklungsstand von Plattformen für Entwürfe?
+        Wie lassen sich die Arbeitsmethoden von Designern Weiterentwickeln?
+      </p>
+      <p>
+        Die Softwareindustrie ist die sich am schnellsten entwickelnde Branche
+        des 21. Jahrhunderts. Einen großen Anteil daran hat der Geist von Open
+        Source, dessen Methoden und Systeme für Maßstäbe an
+        Interoperabilität gesorgt haben. Open Source ist eine Basis für viele
+        kleine Unternehmen und Projekte, aber auch Firmen wie Apple und Google,
+        größer als so mancher Rohstoffkonzern oder Autobauer. Sie bedienen
+        sich gleichermaßen an Open Source Gütern. Was kann man lernen, an
+        Methoden und Werten? Welche negativen Trends der Softwareindustrie
+        lassen sich bei der Anwendung im Design besser vermeiden?
+      </p>
+      <p>
+        Diese Arbeit soll kein Manifest oder theoretisches Konzept sein,
+        sondern ein praktisches Handbuch für Designer, die an Open Design und
+        der Organisation von Selbstorganisation durch digitale Methoden
+        interessiert sind.
+      </p>
+      <h4>
+        <a href="javascript:toggle('opendesign')">Open Design ↓</a>
+      </h4>
+      <div id="opendesign" style="DISPLAY: none">
+        Das klassische Industriedesign ist ein Kollaborateur der Globalisierung
+        und der heutigen Überflussgesellschaft, gemacht um die Massen armer
+        Arbeiter des frühen 20.Jahrhunderts mit billigen, funktionalen
+        Produkten auszustatten. Wie Entwicklungshilfe abhängig machen kann,
+        macht Serienfertigung die Arbeiter abhängig. Zweckmäßige Form,
+        Serienfertigung, Werkzeugbau, Fabriken - das sind nicht nur Bringer des
+        Wohlstands, das sind auch Instrumente der Macht, die in den Händen
+        weniger gelandet sind. Anstatt einer Demokratisierung durch günstige,
+        zweckmäßige Massenprodukte, führte Industriedesign langfristig in
+        einem reinen Überflussmarkt zu dem Gegenteil. Das erleben wir heute:
+        Die meisten Produkte, die konsumiert werden, brauchen wir gar nicht,
+        bzw. sind überflüssig und umweltbelastend, während die zweckmäßige
+        Form sich als elitäre Ästhetik zu einem Luxusgut entwickelt hat. Oder
+        wie der niederländische Designer Joris Laarman es ausdrückt:
+        <h6>
+          <a href="#citations">„Design must accept some of the responsibility
+          for creating many of the world’s current problems.“ <span class=
+          "zitatnummer">1</span></a>
+        </h6>Diesen Satz schrieb der niederländische Designer Joris Laarman
+        2011 in einem Interview für das Buch „Open Design Now“. Das Buch
+        ist ein Gemeinschaftsprojekt der Creative Commons NL, dem
+        niederländischen Institute for Design and Fashion und der Waag
+        Society. Es wurde unter der Creative Commons - Attribution - Non
+        Commercial - Share Alike veröffentlicht und ist hier zu finden:
+        <span class="zitattext"><a href="#citations">opendesignnow.org
+        <span class="zitatnummer">2</span></a></span>
+        <p>
+          Designer sind allerdings nicht allein. Auch Kulturschaffende, Musiker
+          und Filmemacher sind Werkzeuge und Macher der Globalisierung und 
+		  ihrer negativen Auswirkungen auf individuelle Kultur. 
+		  Was
+          aber kann Design besser machen? - Design
+          könnte Vielfalt erhalten und fördern anstatt diese durch
+          gleichförmige Serienproduktion zu unterdrücken. - Design könnte
+          dezentrale Produktion ermöglichen, in der lokale Handwerker wieder
+          eine Rolle spielen und nicht die Fabrikbesitzer und Marken. Das
+          umzusetzen ist aber mit der herkömmlichen Funktionsweise der
+          Industrie und der darin verankerten traditionellen Aufgabe des
+          Designers nicht vereinbar. Die Rolle als Zulieferer des Produzenten
+          ermöglicht dem Designer gar nicht erst diesen Einfluss. Auch das
+          Selbstverständnis als professioneller Gestalter ist untergraben,
+          wenn plötzlich massenhaft unkuratierte Kopien der eigenen Entwürfe
+          auftauchen. Denn das ist es, was Vielfalt in der Serienproduktion
+          bedeutet. Dezentrale Produktion, das bedeutet auch wesentliche
+          Anteile an der Gestaltung dem Handwerker zu überlassen, bzw. keinen
+          Einfluss mehr darauf nehmen zu können. Ein derart offenes Design
+          erfordert einen neuen, offeneren Umgang mit Immaterialgut unter
+          Designern.
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('destruktiv')">Das Destruktive an
+        Lizenzgebühren ↓</a>
+      </h4>
+      <div id="destruktiv" style="DISPLAY: none">
+        Was ist der Widerspruch, zwischen Urheberrechten und Monetarisierung
+        und dem bestmöglichen gesellschaftlichem Nutzen? Zum Umgang mit
+        Immaterialgut (auch wertenderweise „geistiges Eigentum" genannt) hat
+        der Softwareentwickler und Urvater der Open Source Bewegung, Richard
+        Stallman, eine Beobachtung gemacht, die auch auf jeden Schöpfer eines
+        Werks angewandt werden kann:
+        <h6>
+          <a href="#citations">"the desire to be rewarded for one's creativity
+          does not justify depriving the world in general of all or part of
+          that creativity." Aus dem GNU manifesto (1985)<span class=
+          "zitatnummer">3</span></a>
+        </h6>
+        <p>
+          Übertragen auf Gestalter, Kulturschaffende Urheber bedeutet das: Ein
+          im praktischen wie auch im ästhetischen Sinne guter Entwurf hat dann
+          den meisten Nutzen für die Gesellschaft, wenn möglichst viele
+          Menschen die Produkte oder Erzeugnisse, die er erschafft, nutzen
+          können. Je häufiger das Erzeugnis benutzt wird, desto mehr Nutzen
+          kann die Gesellschaft daraus ziehen. Auch wenn es sich bei Produkten
+          und Designerzeugnissen meist nicht um digitale, einfach kopierbare
+          Erzeugnisse handelt, wie bei Software über die Stallman schreibt,
+          trifft dies doch auch auf den Entwurf, bzw. die Idee selber zu. Es
+          sind sind Immaterialgüter, die mit digitalen Mitteln praktisch in
+          beliebiger Anzahl kopiert und verteilt werden können. Wenn eine
+          Umsetzung eines Entwurfs einen Mehrwert für die Gesellschaft hat,
+          dann ist die Nutzungsfreigabe des Entwurfs ebenso einer. Dem
+          Interesse der Gesellschaft an der möglichst umfassenden Nutzung
+          eines Entwurfs steht aber das persönliche Gewinnstreben entgegen,
+          das eine Beschränkung der Nutzung und exklusive Lizenzen fordert.
+          Das liegt daran, dass ein verbreitetes Vergütungsmodell für
+          Gestalter die Nutzungsvergütung ist, das heißt Lizenzgebühren bzw.
+          Umsatzbeteiligung. Das Modell der Nutzungsvergütung beschränkt also
+          die Nutznießer des Entwurfs bzw. der kreativen Idee auf diejenigen,
+          welche Lizenzgebühren dafür bezahlen.
+        </p>
+        <p>
+          Darüber hinaus haben Urheberrechte und Lizenzen auf Ideen auch einen
+          schädlichen Einfluss auf die Nutzungsmöglichkeiten anderer
+          Menschen.: <span class="zitattext"><a href="#citations">“Control
+          over the use of one's 'ideas' really constitutes control over other
+          people's lives; and it is usually used to make their lives more
+          difficult." <span class="zitatnummer">3</span></a></span>
+        </p>
+        <p>
+          Die Forderung Stallmans ist nicht, gänzlich auf Vergütung zu
+          verzichten. Aber die Art wie die Vergütung momentan implementiert
+          wird sei destruktiv. Es gibt jede Menge andere
+          Vergütungsmöglichkeiten außer der Nutzungsgebühr. So wird man
+          weiterhin Menschen finden, die bereit sind, qualifizierte Leute zu
+          engagieren und zu bezahlen, ein bestimmtes Problem zu lösen. Nur
+          können dann eben alle von der Lösung profitieren.
+        </p>
+        <p>
+          Nicht zu unterschätzen sind auch soziale Kontakte und
+          Aufmerksamkeit, die durch öffentliche Nutzung möglich werden, was bei der klassischen
+          Lizensierung nicht der Fall ist. Was könnte eine bessere Werbung
+          für die fachlichen Qualitäten sein als ein weite Verbreitung?
+        </p>
+        <p>
+          Inhalt dieser Arbeit soll aber nicht sein, Vergütungsmodelle zu
+          untersuchen oder zu entwickeln. Das würde den Rahmen einer
+          Design-Diplomarbeit sprengen. Inhalte sind offene Plattformen und die
+          praktischen und rechtlichen Möglichkeiten. Es gibt aber andere
+          Autoren die sich mit der Frage nach gerechteren Vergütungsmodellen
+          beschäftigt haben:
+        </p>
+        <span class="zitattext"><ul><li>
+          <a href="#citations">Frithjof Bergmann: Neue Arbeit, Neue Kultur<span class="zitatnummer">4</span></a>
+        </li>
+        <li>
+          <a href="#citations">Jeremy Rifkin: Access. Das Verschwinden des
+          Eigentums<span class="zitatnummer">5</span></a>
+        </li>
+        <li>
+          <a href="#citations">Jeremy Rifkin: Die
+          Null-Grenzkosten-Gesellschaft: Das Internet der Dinge, kollaboratives
+          Gemeingut und der Rückzug des Kapitalismus<span class=
+          "zitatnummer">6</span></a>
+        </li>
+        <li>
+          <a href="#citations">Kostakis Vasilis und Michel Bauwens: Network Society
+          and Future Scenarios for a Collaborative Economy<span class=
+          "zitatnummer">7</span></a></li></ul>
+        </span>
+      </div>
+      <h4>
+        <a href="javascript:toggle('praktisch')">Praktische Methoden im
+        Designalltag ↓</a>
+      </h4>
+      <div id="praktisch" style="DISPLAY: none">
+        Offene Plattformen sind aber auch deshalb interessant, weil sie im
+        Alltag des Designers einen Mehrwert schaffen können. Das liegt daran,
+        dass die Geschwindigkeit des Entwurfs, die technischen Möglichkeiten,
+        Kompatibilität etc. durch frei geteilte Entwürfe und freie 3D Modelle
+        erweitert werden. Als Produktdesigner arbeite ich neben der Verwendung von physischen
+        Modellen, Mustern und Prototypen im Entwurf auch immer wieder mit
+        reinen digitalen 3D-Modellen von Bauteilen und Materialien. Teile
+        können in den Entwurf übernommen werden, der so weiterentwickelt
+        werden kann noch bevor die Muster oder Prototypen der Teile überhaupt
+        unterwegs sind.
+        <p>
+          Viele dieser 3D-Modelle von Einzelteilen modelliere ich selber in CAD
+          Software und führe wenn nötig Berechnungen anhand von selbst
+          zusammengestellten Formeln und Messpunkten durch. Viele
+          Normteileanbieter wie Misumi, Würth, Molex, PEM Fastener etc. haben
+          jedoch auch eigene CAD-Datenbanken aus denen man fertige 3D Modelle
+          und technische Datenblätter herunterladen kann. Auch
+          Hersteller-unabhängige Tauschplattformen wie grabcad.com oder
+          traceparts.com sind im Ingenieurwesen weit verbreitet. Im
+          Produktdesign gibt es ebenso wie in der Industrie Standards und
+          normative Konstruktionsteile. Das ist praktischer Natur:
+          Wiederkehrende Konstruktionsprinzipien werden durch Abstraktion zu
+          Standards vereinfacht. Der Zugriff auf Standard- Konstruktionsteile
+          erweitert für Designer die Möglichkeiten zum Entwurf komplexer
+          Produkte, da er sich nicht mit der Serienreife untergeordneter
+          Einzelkomponenten beschäftigen muss, sondern nur mit der Reife des
+          Gesamtentwurfs und der Integration.
+        </p>
+        <p>
+          Außer der Datenbanken von CAD-Hersteller und Normteileanbietern gibt
+          es mittlerweile aber auch viele Plattformen für freie Entwürfe.
+          Thingiverse, Youmagine, Github (nicht auf Entwürfe beschränkt),
+          treasure island, reppable um nur ein paar zu nennen. Handwerker,
+          Informatiker, Physiker, Hobbyisten, Leute die man als 'Makerszene'
+          bezeichnet, sind unter den Benutzern dieser Plattformen.
+        </p>
+        <p>
+          Ich behaupte, es können gerade auch professionelle Gestalter von der
+          Verwendung freier Plattformen in ihrem Alltag profitieren. Dabei geht
+          es mir nicht nur um die Entwürfe an sich, sondern auch um die
+          Arbeitsmethoden, wie Entwürfe gemeinschaftlich entstehen können.
+        </p><span class="zitattext"><a href="#citations">Github wird heutzutage
+        zum Beispiel benutzt, um Open Source Raketensteuerungen zu entwickeln,
+        um die CERN Experimente am LHC weiterzuentwickeln oder um erdähnliche
+        Planeten zu finden. <span class="zitatnummer">8</span></a></span>
+        <p>
+          Die Git-Software wurde ursprünglich entwickelt, um den Kern des
+          Linux Betriebssystems weiter zu entwickeln. Aber was tausende
+          freiwillige Softwareentwickler verwenden, um ihre Arbeit selbst zu
+          organisieren und verschiedene Versionen immer wieder zusammen zu führen, ist offensichtlich
+          auch sehr gut geeignet, um gemeinschaftlich an wissenschaftlichen
+          Texten zu arbeiten.
+        </p>
+        <p>
+          Gemeinschaftliche Entwürfe, Social Design oder globale
+          Designprojekte können von Anfang an auf freie Lizenzen setzen. Damit
+          ist gesichert, dass jeder Teilnehmer der gemeinschaftlichen
+          Entwicklung dieselben, vollumfänglichen Rechte am Projekt behält.
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('verwaist')">Die Problematik verwaister
+        Werke durch Urheberrecht ↓</a>
+      </h4>
+      <div id="verwaist" style="DISPLAY: none">
+        Auf einer anderen Ebene gibt es vor allem das Problem von verwaisten
+        Werken, mit dem auch die Designforschung zu kämpfen hat. Die
+        Problematik tritt öffentlich sonst vor allem bei Literatur und
+        mittlerweile auch bei Software zutage, erstreckt sich aber prinzipiell
+        auf alle urheberrechtlich geschützten Werke. Werke und Wissen gehen
+        verloren, weil der Urheber oder Rechtsnachfolger nicht mehr bestimmbar
+        ist. Über die langen Zeiträume, die das Urheberrecht erzwingt, kann diese rechtliche Unsicherheit dazu
+        führen, das Werke vergessen werden, bzw. unwiederbringlich verloren gehen. Im
+        Unterschied zu anderen Vergessens- und Umwälzungs-Prozessen, wie etwa
+        verlorenes Handwerk oder vergessene Produktionsmethoden, liegt dies
+        nicht am Desinteresse oder fehlender Dokumentation, sondern nur an der
+         Unsicherheit der Rechte an dokumentarischen Werken nach dem Tod oder Unauffindbarkeit des Autors. Gerade die
+        Kurzlebigkeit im Digitalzeitalter sorgt für eine bedenkliche
+        Beschleunigung dieses Mechanismus. Open Source Werke haben weniger mit
+        dieser Problematik zu kämpfen, da die Weitergabe und Vervielfältigung
+        bereits direkt in der gewählten Lizenz geregelt ist und damit der
+        rechtliche Weiterbestand, zumindest unter Ausklammerung des Verlusts,
+        gesichert ist. Ist eine Kollision von wirtschaftlichen Interessen mit
+        der Open Source Veröffentlichung zu befürchten, kann die
+        Veröffentlichung unter einer Open Source Lizenz auch zu späterem
+        Zeitpunkt geschehen. Das muss aber meistens mit dem Rechteinhaber
+        vorher geplant werden. Z.B. kann mit dem Verleger eines Buchs sowohl
+        der Zeitraum der Exklusivität als Buch, als auch die Open Source
+        Lizenz im Vorhinein geplant werden.
+      </div>
+      <h3>
+        Vorgehensweise
+      </h3>
+      <h4>
+        <a href="javascript:toggle('gliederung')">Gliederung ↓</a>
+      </h4>
+      <div id="gliederung" style="DISPLAY: none">
+        Um die praktischen Möglichkeiten für den Anwender im Umgang mit
+        offenen Plattformen verständlich zu machen,
+        werden im nächsten Abschnitt zuerst einmal Online-Plattformen
+        vorgestellt und analysiert:
+        <p><span class="zitattext">
+          2. Plattformen</span>
+        </p>
+        <p>
+          Im nächsten Teil wird das Thema freie Lizenzen diskutiert. Lizenzen
+          sind wichtig für die Frage für den Anwender, was die Veröffentlichung eines Werks
+          auf einer offenen Plattform, oder Andere bedeutet und was
+          aufgrund von Schutzrechten eventuell eingeschränkt ist:
+        </p>
+        <p><span class="zitattext">
+          3. Lizenzen</span>
+        </p>
+        <p>
+          Im letzten Teil möchte ich eine Zusammenfassung und einen
+          persönlichen Ausblick in eine mögliche Zukunft von freiem Design
+          geben: 
+		  </p><p><span class="zitattext">
+		  4. Ausblick</span>
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('form')">Form ↓</a>
+      </h4>
+      <div id="form" style="DISPLAY: none">
+        Die Untersuchung erfolgt in Form einer Webseite, die frei editierbar
+        ist. Das ist ungewöhnlich für eine wissenschaftliche Arbeit, aber dem
+        Gegenstand angemessen. Der Untersuchungsgegenstand sind Webseiten, bzw.
+        die Organisationen, welche diese Webseiten betreiben. Der Gegenstand
+        hat also eine Kurzlebigkeit und Veränderbarkeit, die sich auch auf die
+        dazu zu findenden Quellen überträgt. Fachliteratur, die in
+        Abschnitten dieser Arbeit zitiert wird, wie etwa die <span class=
+        "zitattext"><a href="#citations">Masterarbeit von Erik de Bruijn, oder
+        die Veröffentlichungen von Simon Bradshaw, Adrian Bowyer und Patrick
+        Haufe, <span class="zitatnummer">9 10</span></a></span> eignen sich
+        nunmehr nur noch zur Beschreibung der Entstehungsgeschichte, können
+        aber in Kernfragen dieser Arbeit, wie Geschäftsmodell der
+        Plattformbetreiber, Besitzverhältnisse, Geschäftsbedingungen, etc.
+        auf heutige Anwendungen bezogen nichts mehr beitragen. Daran sieht man
+        wie schnell eine fixierte, schriftliche Veröffentlichung dieser
+        Untersuchung veralten würde und schnell nur noch wenig praktischen
+        oder wissenschaftlichen Nutzen hätte. Mit der Form einer Webseite wird
+        ein Experiment aufgestellt, ob diese Untersuchung aktualisiert werden
+        kann und damit aktuell bleibt. Um den Ansprüchen der erkennbaren
+        Urheberschaft und der Nachvollziehbarkeit von älteren Versionen
+        Rechnung zu tragen, wird diese Arbeit auf Github veröffentlicht werden, in
+        dessen Versionsmanagement alle Ursprungsversionen und Modifikationen
+        klar erkennbar und zukünftige weitere Urheber sichtbar sind. Es wird
+        außerdem angestrebt, dass langfristig eine Kopie auch auf einem
+        hochschuleigenen System existiert um unabhängig vom Plattformbetreiber
+        Github zu sein.
+      </div>
+      <h4>
+        <a href="javascript:toggle('einladung')">Einladung zum Editieren
+        ↓</a>
+      </h4>
+      <div id="einladung" style="DISPLAY: none">
+        Der Leser dieser Arbeit ist eingeladen, sich ein eigenes Urteil über
+        die verlinkten Quellen zu bilden und diese zu ergänzen und Abschnitte
+        zu modifizieren. Veränderungen, Ergänzungen und Erweiterungen zum
+        Thema sind eindrücklich erwünscht. Diese Arbeit wird daher unter der
+        Free Art License freigegeben.
+      </div>
+      <h3>
+        Begriffserklärung
+      </h3>Da die Funktionen von Designer, Produzent, Händler, Konsument,
+      Rezensent, Urheber, Rechteinhaber, Lizenznehmer etc. im Internet
+      zunehmend verschwimmen, sind auch die Übergänge zwischen Entwurf, Werk,
+      Werkstück, Typ, Modell, Serie, Objekt, Instanz entsprechend ungeschärft. In der folgenden Begriffserklärung sollen daher die Begriffe,
+      wie sie innerhalb der Arbeit verwendet werden, klar definiert und
+      teilweise durch Theoriemodelle aus anderen Wissenschaften ergänzt
+      werden, um eine feinere Unterscheidung möglich zu machen.
+      <h4>
+        <a href="javascript:toggle('urheber')">Urheber, Gestalter, Designer,
+        Autor ↓</a>
+      </h4>
+      <div id="urheber" style="DISPLAY: none">
+        Wie im Prolog eventuell bereits erkennbar, werden die Begriffe
+        „Designer“ ,„Gestalter“ und zumeist auch „Urheber“ und
+        „Autor“ Synonym verwendet. Ein Urheber kann aber auch lediglich
+        „Initiator“ einer Idee bzw. eines Projekts sein, ohne gestalterisch
+        tätig zu sein, solange es sich denn um ein Werk im Sinne des
+        Urheberrechtsgesetz handelt.
+      </div>
+      <h4>
+        <a href="javascript:toggle('werk')">Werk, Objekt, Entwurf ↓</a>
+      </h4>
+      <div id="werk" style="DISPLAY: none">
+        Ein Werk im Sinne des Urheberrechtsgesetzes ist eine „persönliche
+        geistige Schöpfungen“ (UrhG § 2 Abs. 2), was auch auf Derivate bzw.
+        Bearbeitungen, Kompilationen und Anthologien, Gemeinschaftswerke (durch
+        Co-Autoren), zutreffen kann. Um sich besser gegen die materielle Form
+        des Werks abzugrenzen, wird im folgenden vor allem der Begriff
+        „Entwurf“ verwendet. Ein Entwurf kann eine Zeichnung, Anleitung
+        oder ein digitaler CAD-Datensatz sein.
+      </div>
+      <h4>
+        <a href="javascript:toggle('instanz')">Werkstück, Instanz ↓</a>
+      </h4>
+      <div id="instanz" style="DISPLAY: none">
+        Das Werkstück ist die Materialisierung des Werks. Eine physische
+        Instanz eines Objekts, gebaut nach den Bauplänen des Entwurfs.
+      </div>
+      <h4>
+        <a href="javascript:toggle('derivat')">Derivat, Adaption ↓</a>
+      </h4>
+      <div id="derivat" style="DISPLAY: none">
+        Ein Derivat ist eine Veränderung oder Weiterentwicklung des Entwurfs.
+        Je nach schöpferischer Höhe kann es sich hier um ein eigenes
+        Urheberrechtliches Werk handeln. Das Original ist unabhängig von der
+        Adaption verwendbar, nicht jedoch das Derivat, welches nicht ohne das
+        Original verwandt werden kann.
+      </div>
+      <h4>
+        <a href="javascript:toggle('lizenz')">Lizenz ↓</a>
+      </h4>
+      <div id="lizenz" style="DISPLAY: none">
+        Eine Lizenz ist eine Erlaubnis, die Anderen vom Urheber erteilt werden kann, 
+        um bestimmte Rechte an Immaterialgut wahrnehmen zu dürfen. Man
+        unterscheidet zwischen exklusiver Lizenz, die nur einem Einzigen
+        gewährt werden kann, zum Beispiel bei der Rechtevertretung durch
+        Verwertungsgesellschaften, und den nicht-exklusiven Lizenzen, also die
+        mehrfach vergeben oder neben anderen Lizenzen existieren können.
+      </div>
+      <h4>
+        <a href="javascript:toggle('lizenzgeber')">Lizenzgeber ↓</a>
+      </h4>
+      <div id="lizenzgeber" style="DISPLAY: none">
+        Der Lizenzgeber ist meistens der Urheber des Werks. Manchmal aber auch
+        der Auftraggeber, welcher ggf. die Vermarktungsrechte vom Urheber
+        erworben hat.
+      </div>
+      <h4>
+        <a href="javascript:toggle('lizenznehmer')">Lizenznehmer ↓</a>
+      </h4>
+      <div id="lizenznehmer" style="DISPLAY: none">
+        Lizenznehmer ist derjenige, der die Lizenz in Anspruch nimmt bzw. die
+        darin garantierten Freiheiten wahrnimmt. Also jeder, der
+        Immaterialgüter von Anderen in irgendeiner Art weiterverwendet.
+      </div>
+      <h4>
+        <a href="javascript:toggle('frei')">Frei und Open Source ↓</a>
+      </h4>
+      <div id="frei" style="DISPLAY: none">
+        <span class="zitattext"><a href="#citations">Frei und Open Source wird
+        häufig Synonym verwendet oder verwechselt, dabei ist die Bedeutung
+        grundsätzlich unterschiedlich. <span class=
+        "zitatnummer">11</span></a></span><br>
+        Open Source bedeutet lediglich, dass Code, Verfahren und
+        Produktionsdaten, also Quellen, offen gelegt werden.
+        <p>
+          Und 'frei', das bedeutet nicht etwa kostenlos, wie in 'Freibier'. Frei
+          bedeutet im Zusammenhang mit Open Source, dass auf die Quellen,
+          Verfahren und Produktionsdaten, die Rechte für Ansicht,
+          Vervielfältigung, Weitergabe und Veränderung, gewährt werden.
+        </p>
+        <p>
+          <a href="#fourfreedoms">Diese Definition der 'Vier Freiheiten', stammt
+          aus dem Bereich der Free Software.</a>
+        </p>
+        <p>
+          In dieser Arbeit werden auch Plattformen und Lizenzen erklärt, die
+          nicht dieser Definition von Freiheit entsprechen, zum Beispiel Werke
+          die zwar Open Source sind, aber kommerzielle Nutzung ausschließen.
+        </p>
+        <p>
+          Das Gegenteil von Open Source, ist "Closed Source", bzw.
+          'proprietär'.
+        </p>
+      </div>
+      <h2>
+        Plattformen
+      </h2>Im Folgenden werden für Gestalter in Frage kommende Plattformen
+      vorgestellt und analysiert. Die Liste an unterschiedlichen Plattformen
+      ist so zahlreich und lang, da sie sich beständig verändert. Es
+      entstehen neue Plattformen, während andere aus dem Internet
+      verschwinden, fusionieren, eingestellt oder aufgekauft werden. Um diese
+      Kurzlebigkeit des Internets entgegenzuwirken wird eine Auswahl getroffen.
+      Diese Auswahl ist eine Momentaufnahme, zu der der Leser eingeladen ist,
+      diese zu aktualisieren. Die Auswahl der hier erwähnten Plattformen wurde
+      nach folgenden Kriterien erstellt:
+      <p>
+        Relevanz anhand von Größe und Verbreitung der Plattform. Inhaltlicher
+        Schwerpunkt: Um möglichst vielseitige Optionen für Gestalter
+        anschaulich zu machen, werden Plattformen mit möglichst
+        unterschiedlichen Schwerpunkten betrachtet. Anstelle besonders
+        ähnliche Plattformen zu vergleichen, ist Diversifikation ein
+        Auswahlkriterium.
+      </p>
+      <p>
+        Ausschlusskriterien: Einige Plattformen wären zwar geeignet, um auch
+        von Gestaltern genutzt zu werden, entsprechen aber aus Gründen fehlender
+        Offenheit, restriktiver Nutzungsbestimmungen, anders gesetzten
+        inhaltlichen Schwerpunkten, fehlenden kollaborativen Funktionen, etc., nicht dem in dieser Arbeit gesetzten Fokus auf
+        Offenheit und Zusammenarbeit. Siehe auch unter <span class="zitattext"><a href=
+        "#andereplattformen">andere Plattformübersichten. ↓</a><br>
+		 <a href="#tabellen">Tabelle mit ausgewählten Plattformen im Vergleich ↓</span><br></a>
+      </p>
+      <h3>
+        Thingiverse
+      </h3>
+      <div id="Thingiverse">
+        Die mit Abstand größte Plattform für 3D-Druckmodelle dient als
+        Beispiel für viele ähnliche Depots und Sammlungen, die von der
+        rasanten Entwicklung erschwinglicher 3D Drucker der letzten Jahre
+        losgetreten wurden.
+        <p>
+          thingiverse.com ist eine Webseite der Firma Makerbot Industries LLC
+          und ein Verzeichnis für Entwürfe in Form von digitalen
+          Datensätzen.
+        </p>
+        <p>
+          Makerbot stellt 3D Drucker für den Privatgebrauch her. Der
+          durchschnittliche Thingiverse-Benutzer ist also kein berufsmäßiger
+          Designer. Das sieht man auch an den Schwerpunkten der eingestellten
+          Objekte. Neben Ersatzteilen für Haushaltsgeräte, 3D Druckern,
+          Werkzeugen, findet man auch viele Spielzeuge, Figuren, Modellbauteile.
+        </p>
+        <p>
+          Es dient der Verteilung, dem Tausch und der Weiterentwicklung, zur
+          Ermöglichung einer dezentralen Produktion von Produkten und
+          Alltagsgegenständen. Die Entwürfe sind unter Open
+          Source Lizenzen veröffentlicht und daher gebührenfrei
+          weiterverwendbar. Ein großer Teil der Entwürfe sind technischer
+          Natur wie Ersatzteile für Konsumprodukte. Thingiverse ist außerdem
+          ein Beispiel für die Geschichte, Firmenpolitik und den Umgang mit
+          Nutzern in einer Plattform, die zwar kostenlos ist und sich an Open
+          Source Prinzipien orientiert, aber auch eigene Ziele als
+          privatwirtschaftliche Firma verfolgt.
+        </p>
+      </div>
+      <h4>
+        <a href="#citations">Beispiele auf thingiverse.com <span class=
+        "zitatnummer">12</span></a>
+      </h4>
+    </div><iframe src="thingiversegallery/index.html" id="gallery" scrolling=
+    "no" name="gallery">
+    <p>
+      Your browser does not support iframes.
+    </p></iframe>
+    <div id="text">
+      <h4>
+        <a href="javascript:toggle('reprap')">Das Reprap Projekt ↓</a>
+      </h4>
+      <div id="reprap" style="DISPLAY: none">
+        Inspiriert von der Forschung des Mathematikers John von Neumann und
+        seiner Veröffentlichung <span class="zitattext"><a href=
+        "#citations">„Theory of Self-Reproducing Automata“ <span class=
+        "zitatnummer">13</span></a></span> gründete der britische Mathematiker
+        und Ingenieur Adrian Bowyer an der Universität Bath 2004 die
+        gemeinnützige Organisation RepRap Research Foundation. Sie
+        beschäftigt sich mit der Entwicklung einer sich selbst replizierenden
+        Maschine. Bowyer veröffentlichte alle Forschungsarbeit an dem Projekt
+        unter der freien Lizenz „GNU General Public License“ auf seinem
+        Blog und in einem Media-Wiki. Verschiedene Ansätze additiver Fertigung
+        wurden entworfen und verworfen. Die Entscheidung zur Nutzung des
+        kostengünstigen Schmelzschichtverfahren für die Maschine fiel relativ
+        früh, schon 2005, in Antizipation eines bald auslaufenden Stratasys
+        Patents. <span class="zitattext"><a href="#citations"><span class=
+        "zitatnummer">14</span></a></span> 2008 lief das Patent „Apparatus
+        and method for creating three-dimensional objects“ <span class=
+        "zitattext"><a href="#citations"><span class=
+        "zitatnummer">15</span></a></span> aus, welches dem US-Amerikaner S.
+        Scott Crump als Basis zum Aufbau des Technologie-Konzerns Stratasys
+        diente. Crump beschreibt dort ein additives Fertigungsverfahren,
+        welches als „FDM“ (fused deposition modeling) bzw.
+        Schmelzschichtverfahren, umgangssprachlich „3D-Druck“ bekannt
+        geworden ist. Dieses Verfahren ermöglicht den komplett digital
+        gesteuerten, additiven Aufbau von plastischen Objekten, die vorher am
+        Computer erstellt wurden. Das Verfahren wird von Designern seit den
+        90ern neben anderen (SLA, SLS, DMLS) in der Entwurfs- und
+        Konstruktionspraxis eingesetzt und zählt zu den „rapid
+        prototyping“ Herstellungsverfahren.
+        <p>
+          Das Reprap Projekt führte zur Entwicklung von mittlerweile hunderten
+          verschiedenen 3D Drucker Varianten, die alle auf gemeinsamen
+          Entwicklungsgrundlagen basieren. Kern der Reprap-Geräte ist, dass
+          sie selber mithilfe eines 3D Druckers einfach und günstig
+          herzustellen sind und nur auf einem Minimum an verfügbaren Normteilen
+          basieren. Die FDM Technik wurde unabhängig von der vorhandenen 3D
+          Druck Industrie selber entwickelt, in einem Bruchteil der Zeit und
+          des Aufwandes, den die proprietären Firmen in den 80ern dafür
+          gebraucht hatten. Dieser Erfolg wurde durch mehrere Faktoren und
+          Umstände begünstigt.
+        </p>
+        <p>
+          Das Reprap Projekt konnte für die Steuerung der Maschine auf eine
+          einfach zu programmierende Mikrokontroller-Umgebung zurückgreifen.
+          Das Arduino Projekt aus Italien produzierte 2006 die ersten 200
+          Platinen und die Software, mit der man einfache Mensch-Maschinen
+          Interaktion ausprobieren und lernen kann. Die Software basierte auf
+          <span class="zitattext"><a href="#citations">Processing <span class=
+          "zitatnummer">16</span></a></span> , einer Programmiersprache und
+          Entwicklungsumgebung, die vom Massachusetts Institute of Technology (MIT) speziell für Gestalter und
+          Künstler konzipiert wurde. Processing ist vor allem zu Generierung
+          von visuellen und interaktiven Formen konzipiert, Arduino dagegen
+          für physische Interaktion, Mess-, Schalt- und Regelkreise.
+        </p>
+        <p>
+          Ein weiterer günstiger Umstand für das Reprap Projekt ist der
+          Preisverfall von Schrittmotoren und Linearführungen Ende der 2000er
+          Jahre durch verstärkten globalen Wettbewerb. Nicht nur
+          Industriehändler wie die japanische Misumi Group oder lokale
+          Normteilehändler bieten Zugang zu Maschinenbauteilen.
+          Handelsplattformen wie Alibaba.com verringern die Großhandelsmarge,
+          indem sie für provinzielle Motoren- und Wälzlager-Hersteller den
+          Direktvertrieb ermöglichen. Der Preisverfall betrifft auch
+          Maschinen, die auf diesen Teilen basieren, wie computergesteuerte
+          Fräsmaschinen und Co2 Laser- Schneidmaschinen, Fertigungsmethoden
+          die ebenfalls für die digitale Reproduktion geeignet sind.
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('makerbot')">Die Gründung von Makerbot
+        Industries und thingiverse.com ↓</a>
+      </h4>
+      <div id="makerbot" style="DISPLAY: none">
+        Eine Verbindung zu Kunst und Design ist der Reprap Bewegung schon sehr
+        früh nachzuweisen. Der Gründer von Thingiverse, Bre Pettis, einer der
+        Verfasser des ‚Open Design Now' Buchs, kam auf Einladung des
+        Künstlers Johannes Grenzfurthner in ein Residenzprogramm bei der
+        Künstlergruppe „monochrom“ nach Wien. Es entstand anlässlich des
+        Roboexotica 2007 Festivals einer der ersten Rep-strap 3D Drucker auf
+        Basis der Erfahrungen des Reprap Projekts. Repstrap bedeutet: Die Teile
+        für die erste selbst replizierende Maschine werden noch gänzlich per
+        Hand gefertigt. <span class="zitattext"><a href=
+        "#citations"><span class="zitatnummer">17</span></a></span><br>
+        Das Potential erkannt, gründete Pettis dann zusammen mit Adam Mayer
+        and Zach Smith im Fablab NYCResistor noch im Januar 2009 die Firma
+        Makerbot Industries, um die Früchte des Reprap Projekts, einfache und
+        günstige FDM-Maschinen, kommerziell verfügbar zu machen. Die ersten
+        Maschinen bestehen aus lasergeschnittenen Platten und FDM gedruckten
+        Teilen. Das Konzept von Makerbot war besonders, weil neben Entwicklung
+        und Vertrieb von Geräten und Software, von Anfang an auch eine
+        Austauschplattform mit den Nutzern ins Leben gerufen wurde. Anfangs hat
+        Makerbot Industries so zum Beispiel die eigenen Kunden an der
+        dezentralen Produktion von Einzelteilen für neue Geräte beteiligt.
+        thingiverse.com wurde so bereits vor der offiziellen
+        Unternehmensgründung im November 2008 gestartet, als Austauschbörse
+        für digitale Entwurfsdateien, die unter einer öffentlichen Lizenz
+        stehen. Neben einer Datenbank für nutzergenerierte Objekte, ähnelt
+        thingiverse.com dabei auch einem sozialen Netzwerk für seine Nutzer.
+        Auch wenn Entwürfe für den FDM Druck überwiegen, erstreckt sich die
+        Datenbank von Anfang an auch auf laserschneid- und fräsbare Entwürfe.
+      </div>
+      <h4>
+        <a href="javascript:toggle('stratasys')">Makerbot wird Closed Source
+        und Verkauf an Stratasys ↓</a>
+      </h4>
+      <div id="stratasys" style="DISPLAY: none">
+        Als Makerbot seine dritte Generation an 3D Druckern entwickelte, den
+        Replicator 2X, verließ der Gründer Zachary Smith die Firma im Streit.
+        <span class="zitattext"><a href="#citations"><span class=
+        "zitatnummer">18</span></a></span><br>
+        Der Replicator 2x wurde 2012 nicht mehr als Open Source
+        veröffentlicht. Ein Verstoß gegen die Lizenz des Reprap Projekts ist
+        schwer nachweisbar, da es sich bei dem technischen Gegenstand nicht um
+        ein Werk im urheberrechtlichen Sinne handelt. Trotzdem ging viel Kritik
+        von anderen Seiten der Reprap Community ein. Im Juni des Folgejahres
+        wurde Makerbot für 403Millionen USD von Stratasys gekauft, der Firma, auf die das FDM Patent
+        von 1989 zurückgeht, und die bereits eine nahezu marktbeherrschende
+        Stellung im Bereich der professionellen FDM Drucker inne hält.
+        <span class="zitattext"><a href="#citations"><span class=
+        "zitatnummer">19</span></a></span>
+      </div>
+      <h4>
+        <a href="javascript:toggle('unklarheiten')">Risiken in den
+        Nutzungsbedingungen von Thingiverse ↓</a>
+      </h4>
+      <div id="unklarheiten" style="DISPLAY: none">
+        Die Thingiverse Nutzungsbedingungen enthalten einen Passus, der für
+        viel Kritik seitens der Nutzer gesorgt hat: 
+        <p><span class="zitattext">
+          <a href="#citations">You hereby grant, and you represent and warrant
+          that you have the right to grant, to the Company and its affiliates
+          and partners, an irrevocable, nonexclusive, royalty-free and fully
+          paid, worldwide license to reproduce, distribute, publicly display
+          and perform, prepare derivative works of, incorporate into other
+          works, and otherwise use your User Content, and to grant sublicenses
+          of the foregoing, solely for the purposes of including your User
+          Content in the Site and Services. You agree to irrevocably waive (and
+          cause to be waived) any claims and assertions of moral rights or
+          attribution with respect to your User Content. <span class=
+          "zitatnummer">20</span></a></span>
+        </p>Innerhalb des ersten Satzes wird der Firma eine nicht-exklusive
+        unbegrenzte Lizenz an den Inhalten verliehen, nur um sie dann im
+        Nebensatz wieder auf die Zwecke der Web-Seite und Services zu
+        begrenzen. Dieser Passus ist praktisch neben der gewählten Open Source
+        Lizenz aktiv. Normalerweise ist in dieser Open Source Lizenz das Recht
+        der Weitergabe, Aufführung, Derivate etc. definiert. Makerbot
+        behauptet, diese Formulierung wäre notwendig, um rechtliche
+        Unsicherheit für die Betreiber zu vermeiden und bei Thingiverse
+        eingestellte Projekte promoten zu können:
+        <h6>
+          <a href="#citations">The terms, that we set up in February of this
+          year, allow us to share your designs on our website and protect us
+          from companies with lawyers. <span class="zitatnummer">21</span></a>
+        </h6>Es gibt aber auch andere Meinungen, was dieser Passus bedeuten
+        kann. Ändert Thingiverse z.B. das Geschäftsmodell, z.B. aufgrund von
+        Druck der Investoren von außen, würde diese umfassende Lizenz die man
+        Thingiverse gewährt hat aktiv, auch wenn man eine nicht-kommerzielle
+        Open Source Lizenz gewählt hat. Diese Interpretation der
+        Nutzungsbedingungen vertritt zum Beispiel der frühe Reprap Entwickler
+        Joszef Prusa.<span class="zitattext"><a href="#citations"><span class=
+        "zitatnummer">22</span></a></span>
+      </div>
+      <div id="altthing"></div>
+      <h4>
+        <a href="javascript:toggle('alternativenthing')">Alternativen zu
+        Thingiverse ↓</a>
+      </h4>
+      <div id="alternativenthing" style="DISPLAY: none">
+        Gerade in Hinblick auf die turbulente Geschichte der Betreiberfirma
+        Makerbot, sowie dem unklaren Passus in den Nutzungsbedingungen, sind
+        Alternativen wichtig und von Interesse für Designer. Die größte
+        Menge an Objekten hat nach wie vor Thingiverse. Als Ressource ist sie also für
+        Designer eine gute Quelle. Allerdings sind alle Thingiverse
+        Projekte, die als „share alike“ veröffentlicht wurden,
+        grundsätzlich auch einfach portierbar. Das heißt, auf andere
+        Plattformen, die ebenfalls diese Open Source Lizenzen unterstützen,
+        können die Inhalte, die schon auf Thingiverse sind, ebenfalls
+        eingestellt werden. Als europäische Alternative zum US-basierten
+        Thingiverse bietet sich daher die noch recht junge Plattform Youmagine
+        an. Die Nutzungsbedingungen von Youmagine enthalten keinen derartigen
+        problematischen Teil über eine vollumfängliche Lizenzgewährung wie
+        die von thingiverse.com.
+        <h5>
+          youmagine.com<span class="zitattext"><a href=
+          "#citations"><span class="zitatnummer">23</span></a></span>
+        </h5>Youmagine wurde erst 2014 als Alternative zu Thingiverse
+        gegründet und verfügt über ähnliche Funktionen. Die Plattform für
+        3D Druck Entwürfe ist unter kritischen Open Source Designern beliebt,
+        da sie keine duale Lizenz wie Thingiverse verwendet und somit den
+        Nutzern keine Zugeständnisse abfordert, was die Lizenzfrage angeht.
+        Hinter Youmagine steht die Ultimaker B.V. aus den Niederlanden, die
+        ihre kommerziell sehr erfolgreichen 3D Drucker unter den Bedingungen
+        der Creative Commons Attribution Non-Commercial als Open Source
+        veröffentlicht hat. Der Anteil an brauchbaren, 3D druckbaren
+        Entwürfen ist bei Youmagine höher als bei Thingiverse, wo auch
+        häufig ungetestete nicht ausgereifte Modelle auftauchen, aber die 
+		Gesamtmenge an Objekten ist bisher nur ein Bruchteil der von Thingiverse.
+        <h5>
+          treasure.is<span class="zitattext"><a href="#citations"><span class=
+          "zitatnummer">24</span></a></span>
+        </h5>Treasure Island ist eine Plattform des 3D Drucker Herstellers
+        Pirate3D aus Singapur. Pirate3D erkennt als Betreiber der Seite an,
+        dass die Rechte an den hochgeladenen Objekten beim Urheber verbleiben
+        und unterstützt eine Vielzahl von freien Lizenzen, unter anderem die
+        Creative Commons Lizenzen. Es wird außerdem behauptet, alle Modelle
+        wären kuratiert und auf 3D Druckbarkeit getestet. Da aber Fotos von
+        3Ddrucks der meisten Modelle fehlen, könnte es sich auch nur um einen
+        automatischen Test handeln.
+        <h5>
+          Repables.com<span class="zitattext"><a href="#citations"><span class=
+          "zitatnummer">25</span></a></span>
+        </h5>Die Webseite hat eine ähnliche Zusatzlizenzklausel wie
+        Thingiverse, mit der man dem Betreiber des Services eine
+        uneingeschränkte Lizenz verleiht. Im Gegensatz zu Thingiverse, wird
+        dem Author aber das Recht gewährt diese Lizenz jederzeit zu
+        widerrufen, was nach einer Frist von 60 Tagen in der Entfernung des
+        Inhalts resultiert.
+        <h5>
+          Mediagoblin<span class="zitattext"><a href="#citations"><span class=
+          "zitatnummer">26</span></a></span>
+        </h5>Das GNU Mediagoblin Projekt hat sich zum Ziel gesetzt eine
+        Software zum Betreiben einer eigenen Plattform zu entwickeln. Ein
+        Vorbild ist das Mediawiki Softwareprojekt, welches die Grundsoftware
+        für den Betrieb von Wikipedia und vieler anderer Wikis, entwickelt.
+        Mediagoblin ist <a href="#fourfreedoms">Free Software</a>, allerdings
+        sind noch nicht alle geplanten Funktionen fertig.
+        <p>
+          Die Mediagoblin Software hat ähnliche Funktionen wie Thingiverse,
+          ist allerdings ebenfalls für andere digitale Medien gedacht, wie
+          Bilder, Videos, Musik. Mediagoblin ist damit auch eine dezentrale
+          Alternative zu Youtube, Flickr oder DeviantArt.<span class=
+          "zitattext"><a href="#citations"><span class=
+          "zitatnummer">27</span></a></span>
+        </p>
+        <p>
+          Mediagoblin basierte Datenbanken für 3D Modelle sind momentan noch
+          schwierig in der praktischen Nutzung. Aufgrund der fehlenden
+          Anbindung an Suchmaschinen oder Aggregatoren, würde eine
+          Fragmentierung entstehen, die offene Zusammenarbeit erschwert.
+        </p>
+        <p>
+          <a href="#ausschluss">Mit bld3r.com Gibt es allerdings einen
+          Aggregator für 3D Druck Modelle der seine Webseite als Open Source
+          entwickelt. Die Anbindung von Mediagoblin Datenbanken ist
+          womöglich nur eine Frage der Zeit.</a>
+        </p>
+      </div>
+      <h3>
+        Github
+      </h3>
+      <div id="Github">
+        Github ist eine File-Hosting Plattform auf der Open Source Projekte
+        entwickelt werden, die meisten davon sind Free Software. Aber nicht nur
+        für Software ist Github geeignet, auch Prosa, wissenschaftliche Texte,
+        technische Konstruktionen etc. können von den zur Verfügung stehenden
+        Funktionen profitieren. Diese Funktionen sind Versionskontrolle,
+        Auftrennung, Zusammenführung, soziales Netzwerk, Diagramme und
+        Statistiken, etc. Github ist vor allem für die Verwaltung von sehr
+        großen und inhomgenen Teams geeignet, bei denen nicht alle
+        gleichzeitig an denselben Daten arbeiten können.
+      </div>
+      <h4>
+        <a href="javascript:toggle('beispielgithub')">Beispiele
+        Github</a><a href="#citations"><span class="zitatnummer">28, 29,
+        30</span><br></a>
+      </h4>
+    </div><iframe src="githubgallery/index.html" id="gallery" scrolling="no"
+    name="gallery">
+    <p>
+      Your browser does not support iframes.
+    </p></iframe>
+    <div id="text">
+      <h4>
+        <a href="javascript:toggle('git')">Die Git Versions-Verwaltung ↓</a>
+      </h4>
+      <div id="git" style="DISPLAY: none">
+        Die Entwicklung der Software Git wurde 2005 vom Linux-Kernel
+        Entwicklerteam gestartet. Der Linux Kernel ist der Kern jedes Linux
+        Betriebssystems und damit die Basis für Knapp 70% des Internets
+        weltweit und einem ähnlichen Anteil bei Mobiltelefonen und
+        Tablets.<span class="zitattext"><a href="#citations"><span class=
+        "zitatnummer">31</span></a></span> <p>Die Entwickler des Kernels
+        verwalten und verändern Code, also Text, gemeinschaftlich und hatten
+        dazu bis 2005 ein Versions-Verwaltungs-Programm namens Bitkeeper im
+        Einsatz. Nach dessen Einstellung, suchte man nach einer Alternative, um
+        das Projekt mit rund 2000 freiwilligen Mitarbeiter und den rund 5
+        Millionen Zeilen zählenden Code zu verwalteten. Man stellte schnell fest, dass
+        nur eine Eigenentwicklung den Ansprüchen gerecht werden könnte:
+        Maximale Geschwindigkeit Einfachheit und Unterstützung für nicht-lineare
+        Entwicklungsprozesse mit tausenden parallelen Strängen.</p> <p>Mit komplett
+        verteilten Daten, skalierbar, auch auf sehr große Projekte und
+        Mitarbeiterzahlen unterscheidet sich Git technisch radikal von anderen
+        Versions-Verwaltungen, was einige praktische Vorteilen bietet. Frühere
+        Versions-Verwaltungs-Systeme arbeiteten meistens mit einem zentralen
+        Projektarchiv. Dabei ist klar zugeordnet, welcher Mitarbeiter welchen
+        Stand übertragen hat und für jede Datei gibt es eine
+        Änderungshistorie. Git fährt eine andere Strategie. Statt mit einem
+        einzelnen zentralen Projektarchiv zu arbeiten, verfügt jeder
+        Mitarbeiter über ein eigenes Projektarchiv, seinen ‚branch‘ , in
+        dem alle Daten liegen, an denen er arbeitet. Änderungen werden erst
+        lokal gespeichert, was sich ‚commit‘ nennt. Dann wird ein ‚Pull
+        request‘ an die zentrale Instanz des Projektarchivs gestartet.
+        Verwalter der zentralen Instanz können diese Änderungen dann
+        annehmen, was mit ‚merge‘ bezeichnet wird. Gibt es einen Konflikt
+        mit anderen Änderungen im selben Zeitraum kann Git die Unterschiede
+        der Versionen anzeigen und zusammenführen ‚merge conflict‘ oder
+        eine eigenständige Version weiterführen, einen sogenannten
+        ‚fork‘. Alle Änderungen werden in ‚Snapshots‘ gespeichert, die
+        das gesamte Projekt zu jedem bestimmten Zeitpunkt darstellen können.
+        Damit ist es auch möglich, die Version eines einzelnen Authors
+        anzuzeigen, bzw. in einem ‚merge’ nur bestimmte Änderungen zu
+        übernehmen ohne die Gefahr, dass sich dabei veraltete Versionen von
+        anderen Abschnitten wieder einschleichen können.</p>
+        <p>
+          Git hat sich als Versions-Verwaltung in den letzten fünf Jahren sehr
+          rasch verbreitet. Selbst der frühere Linux-Rivale Microsoft hat
+          mittlerweile Entwicklungsprojekte auf Git umgestellt, anstelle des
+          eigenen Produkts ‚TFVC’ (Team Foundation Version
+          Control).<span class="zitattext"><a href="#citations"><span class=
+          "zitatnummer">32</span><br></a></span> Ursprünglich ist Git ein
+          Kommandozeilen-Programm ohne grafische Oberfläche. Doch längst gibt
+          es grafische Git-Programme für jedes Betriebssystem und Webseiten
+          basierte Steuerungen für die zentrale Komponenten.
+        </p>
+        <p>
+          Der Einzug von Git in kleinere, unabhängige Projekte und andere
+          Branchen außerhalb der reinen Softwarentwicklung hat aber erst mit
+          Github und anderen Git Onlineangeboten angefangen, die Git um eine
+          Weboberfläche erweitern.
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('githubhosting')">Github, Hostingplattform
+        für Git ↓</a>
+      </h4>
+      <div id="githubhosting" style="DISPLAY: none">
+        github.com ist eine 2008 gegründete Online Plattform ,auf der Nutzer
+        Dateien speichern und Mithilfe der Versionsverwaltungs-Software Git
+        verwalten können. Github hat die reine Versionsverwaltung um ein
+        soziales Netzwerk erweitert, mit Funktionen wie Nutzerprofilen,
+        Nachrichtensystemen, ‚Beobachten‘ und ‚Folgen‘-Funktion, Wikis,
+        Ticketsystem etc.
+        <p>
+          Github löst damit Sourceforge ab, die bis dahin größte
+          Onlineplattform für Open Source Software. Github ist damit die
+          größte Datenbank für Projekte weltweit, mit über 12 Millionen
+          Nutzern und mehr als 30 Millionen Projekten.<span class=
+          "zitattext"><a href="#citations"><span class=
+          "zitatnummer">33</span><br></a></span> Neben der Programmierung wird
+          Github mittlerweile auch in anderen Schwerpunkten eingesetzt, bei
+          denen es auf kollaborative Textbearbeitung ankommt.
+        </p>
+        <p>
+          Für Designer hervorzuheben ist, dass Github auch für das Hosting
+          von eigenen Webseiten verwendet werden kann. Außerdem Unterstützt
+          Github die Anzeige von 3D Dateien im .STL Format, die für 3D Drucker
+          verwendet werden und Photoshop Dateien. Die Versionsverwaltung,
+          Vergleiche und Zusammenführungen können also auch für 3D und 2D
+          Dateien verwendet werden.
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('gitbesitz')">Geschäftsmodell und
+        Besitzverhältnisse ↓</a>
+      </h4>
+      <div id="gitbesitz" style="DISPLAY: none">
+        Das Geschäftsmodell von Github ist einfach: Öffentliche, bzw. Open
+        Source Projekte sind grundsätzlich kostenlos. Geschlossene Projekte,
+        die nur für einen bestimmten Nutzerkreis sichtbar sind, können nur
+        monatlich zahlende Nutzer erstellen. Sehr große Organisationen können
+        daneben auch die zugrundeliegende Software der Github Webseite
+        lizensieren und selber betreiben.
+        <p>
+          Neben seinen Gründern und einigen Mitarbeitern besitzen den
+          größten Teil an Github die Investoren Andreessen Horowitz und die
+          Sequoia Capital Gesellschaft. Bei beiden handelt es sich um
+          Venture-Kapitalisten die auf hohen Profit bei hohem Risiko abzielen.
+          Es ist nicht ausgeschlossen, dass diese Einfluss auf das
+          Geschäftsmodell von Github nehmen, z.B. sobald eine
+          marktbeherrschende Stellung abgesichert ist. Normalerweise verdienen
+          derartige Kapitalgesellschaften aber am Ende durch den Verkauf der
+          Firma an einen der IT-Riesen wie Google, Apple, Microsoft, Samsung,
+          IBM, Oracle.
+        </p>
+        <p>
+          Da die Projekte selber auf Github ja frei und Open Source sind,
+          wären negative Auswirkungen auf die Nutzer nur gering. Ein Projekt
+          kann zu einem Mitbewerber oder auf einen selbst gehosteten Service
+          umziehen. Wenn man diese Unabhängigkeit sowieso in Betracht zieht,
+          stellt sich aber die Frage, wieso man nicht gleich auf von Anfang an
+          freie Lösungen wie Gitlab setzt.
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('alternativengithub')">Plattformen ähnlich
+        wie Github ↓</a>
+      </h4>
+      <div id="alternativengithub" style="DISPLAY: none">
+        <h5>
+          Bitbucket<span class="zitattext"><a href="#citations"><span class=
+          "zitatnummer">34</span><br></a></span>
+        </h5>Eine Alternative zu Github, die auch geschlossene Projekte
+        kostenlos ermöglicht und die Kosten erst von der Größe und Anzahl
+        der Projekte abhängig macht. Dafür fehlt der soziale Netzwerk Aspekt
+        von Github. Es wird eingesetzt bei Firmen wie DHL, die New York Times,
+        Paypal und Tesla Motors.
+        <h5>
+          Gitlab<span class="zitattext"><a href="#citations"><span class=
+          "zitatnummer">35</span><br></a></span>
+        </h5>Gitlab ist eine freie Open Source Software bestehend aus Git und
+        einer Weboberfläche für die Projektverwaltung, die man selber auf
+        eigenen Geräten installieren kann. Gitlab bietet allerdings auch eine
+        Onlineversion an, was als Vorstufe zu einer selbst betriebenen Gitlab
+        Instanz dienen kann.
+      </div>
+      <h3>
+        Instructables
+      </h3>
+      <div id="Istructables">
+        Instructables ist eine Plattform für Anleitungen, Dokumentationen und
+        do-it-yourself Projekte. Hier ist nicht das Werk an sich, bzw. ein
+        Digitales Abbild davon Gegenstand des Austausches, sondern das
+        Verfahren, die Anleitung oder Beschreibung der Herstellung.
+        Instructables sieht sich außerdem als Online-Magazin, für die
+        do-it-yourself-Bewegung, also für Amateure und Hobbyisten. Schwerpunkt
+        sind mit Haushaltsmitteln reproduzierbare Bastelprojekte, aber auch
+        Survivaltipps, Gerichte, Elektronik, Möbel, Spielzeuge und Kostüme.
+        <p>
+          Es gibt aber auch einige professionelle Möbelbauer, Handwerker und
+          Designstudenten, die ihre Entwürfe auf Instructables
+          veröffentlichen. Die meisten Projekte auf Instructables sind unter
+          Lizenzen veröffentlicht, die gewerbliche Nutzung ausschließen. Dies
+          gilt aber soweit nur für die Weiterverwendung des Artikels, der
+          Bilder und sonstiger Dateien aus dem Artikel, also für die
+          urheberrechtlichen Werke. Das Durchführen der beschrieben
+          Arbeittschritte und Verfahren, etc. ist dann aber nicht durch die
+          Lizenz eingeschränkt, und wäre höchstens anderweitig durch Patent-
+          oder Gebrauchsmuster einschränkbar. Siehe dazu den Abschnitt zur
+          <a href="#anwendbarurheber">Anwendbarkeit des Urheberrechts für
+          Design.</a>
+        </p>Die Plattform kann ebenso wie Thingiverse auf eine längere
+        Geschichte zurückblicken als die meisten Mitbewerber und gilt daher
+        als Marktführer.
+      </div>
+      <h4>
+        <a href="javascript:toggle('beispielinstruct')">Beispiele
+        Instructables</a><a href="#citations"><span class="zitatnummer">36,
+        37</span><br></a>
+      </h4>
+    </div><iframe src="instructablesgallery/index.html" id="gallery" scrolling=
+    "no" name="gallery">
+    <p>
+      Your browser does not support iframes.
+    </p></iframe>
+    <div id="text">
+      <h4>
+        <a href="javascript:toggle('squid')">Squid Labs ↓</a>
+      </h4>
+      <div id="squid" style="DISPLAY: none">
+        Die Gründer von Instructables, Eric Wilhelm und Saul Griffith haben
+        nach ihrem Studium am MIT Media Lab mit Kommilitonen zusammen die
+        Softwareentwicklungs- und Consultingfirma ‚Squidlabs‘
+        gegründet.<span class="zitattext"><a href="#citations"><span class=
+        "zitatnummer">38</span><br></a></span> Instructables ist dann als
+        internes Werkzeug für Anleitungen entstanden, zuerst mit Inhalten zum
+        Thema Elektronik, Kochen, Kiting, Fahrräder.
+        <p>
+          Der Öffentlichkeit präsentiert haben die beiden Entwickler ihr
+          Projekt auf der Konferenz ‚Foo Camp’. Das Foo Camp selber ist
+          eine sich inhaltlich selbst organisierende Veranstaltung, mit
+          parallelen zu einem Wiki oder manchmal auch als ‚unconference‘
+          bezeichnet.
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('moninstruct')">Geschäftsmodell ↓</a>
+      </h4>
+      <div id="moninstruct" style="DISPLAY: none">
+        Instructables bietet ähnlich wie Thingiverse Marketingdienstleistungen
+        für zahlende Firmen an. So veranstaltet man Wettbewerbe, erstellt
+        besondere Kategorien, mit gesponserten Artikeln. Das ist insofern
+        schwierig, denn Instructables bezeichnet sich als ‚Magazin‘, hält
+        aber nicht die Regeln für eine journalistische Darstellungsform ein.
+        Eine saubere Trennung von redaktionellem Inhalt und Werbung ist nicht
+        gegeben.
+        Instructables bietet außerdem seit 2009 ein monatliches Abomodell an,
+        welches sich ‚pro-Membership“ nennt.
+      </div>
+      <h4>
+        <a href="javascript:toggle('autodesk')">Verkauf an Autodesk ↓</a>
+      </h4>
+      <div id="autodesk" style="DISPLAY: none">
+        2011 kündigte der marktführende CAD-Software Hersteller Autodesk die
+        erfolgreiche Übernahme von Instructables zu einer unbekannten Summe
+        an. Das hat zu Kritik und Unsicherheit in der Nutzergemeinschaft
+        geführt. Die Nachfolgende Ankündigung, man werde weder die
+        Funktionsweise der Plattform noch die Nutzungsbedingungen
+        einschränken, hat sich aber bisher als haltbar
+        herausgestellt.<span class="zitattext"><a href=
+        "#citations"><span class="zitatnummer">39</span><br></a></span>
+      </div>
+      <h4>
+        <a href="javascript:toggle('nutzunginstruct')">Nutzungsbedingungen
+        ↓</a>
+      </h4>
+      <div id="nutzunginstruct" style="DISPLAY: none">
+        Auch in den Nutzungsbedingungen von Instructables findet sich ein
+        Abschnitt, den man als Parallelizensierung zur ausgewählten Open
+        Source Lizenz interpretieren kann:<p>
+        <span class="zitattext">
+          <a href="#citations">„By posting, providing, uploading, submitting,
+          sharing, publishing, distributing, making available and/or allowing
+          others to access or use Your Content to or through the Service, you
+          grant to us and our affiliates a world-wide, royalty-free, fully
+          paid-up, perpetual, non-exclusive, transferable, and fully
+          sublicensable (through multiple tiers) right and license (but not the
+          obligation) to reproduce, distribute, redistribute, modify,
+          translate, adapt, prepare derivative works of, display, perform (each
+          publicly or otherwise) and otherwise use all or part of Your Content,
+          by any and all means and through any media and formats now known or
+          hereafter discovered, but solely in connection with the Service
+          and/or our business activities (such as, without limitation, for
+          promoting and marketing the Service) and/or to comply with legal or
+          technical requirements.“<span class="zitatnummer">40</span></a></span>
+        </p>Die berechtigten Zweifel an dieser Formulierung sind ähnlich wie
+        bei Thingiverse: Wieso wird denn, wenn es sich um eine eingeschränkte
+        Lizenz, nur für die Zwecke des eigenen Services bzw. Unternehmens
+        handelt, eine transferierbare, unterlizensierbare Lizenz gewährt?
+        Existiert hier nicht ein Schlupfloch, das der Firma Autodesk
+        ermöglicht, den eingestellten Entwurf auch anderweitig kommerziell zu
+        nutzen indem einfach der Zweck der Webseite Thingiverse umdefiniert
+        wird? Die Problematik ist hier, ähnlich wie bei Thingiverse, dass man
+        sich das Recht vorbehält, den Service bzw. Zweck der Plattform neu zu
+        definieren, bzw. weiter zu entwickeln. Damit bezieht sich diese
+        Parallellizenz nicht nur auf den zum Einstellungszeitraum gebotenen
+        Service, sondern auf alle unternehmerischen Aktionen ,die Autodesk
+        unter dem Namen Instructables betreiben möchte.
+      </div>
+      <h4>
+        <a href="javascript:toggle('alternativeinstruct')">Instructables
+        Alternativen ↓</a>
+      </h4>
+      <div id="alternativeinstruct" style="DISPLAY: none">
+        <h5>
+          makezine.com<span class="zitattext"><a href="#citations"><span class=
+          "zitatnummer">41</span><br></a></span>
+        </h5>Make ist ein Magazin, das sowohl schriftlich als auch online
+        zweimonatlich erscheint. In Deutschland gibt es einen unabhängigen
+        Ableger, der vom renomierten Heise Zeitschriftenverlag betrieben wird.
+        Damit ist Make zwar keine offene Plattform, aber zumindest ein Teil von
+        dem, was Instructables vorgibt zu sein: Ein redaktionelles Magazin.
+        <h5>
+          hackaday.com<span class="zitattext"><a href="#citations"><span class=
+          "zitatnummer">42</span><br></a></span>
+        </h5>Hackaday ist ein Blog mit vielen praktischen Artikeln im
+        Anleitungsstil. Damit hat Hackaday ähnlich wie die Make Zeitschrift
+        einen redaktionellen Charakter.
+        <h5>
+          github.com<span class="zitattext"><a href="#citations"><span class=
+          "zitatnummer">28</span><br></a></span>
+        </h5>Github ist eine Alternative, wenn es um das Einstellen von eigenen
+        Artikeln geht. Die Verbreitung für praktische Anleitungen ist zwar
+        längst nicht so breit wie bei Instructables, allerdings gibt es keine
+        lizenztechnischen Unklarheiten und die Möglichkeiten für
+        Co-Autorenschaft sind ungleich umfangreicher. Wenn man beabsichtigt,
+        mit einem freien Open Source Design Artikel bzw. einer Anleitung
+        Aufmerksamkeit zu erzeugen, dann kann eine Kombination von Github mit
+        News an Hackaday und Makezine für einen mindestens ebenbürtigen
+        'Exposure-Faktor' sorgen.
+      </div>
+      <h3>
+        Grabcad
+      </h3>
+      <div id="Grabcad">
+        Eigentlich sollte Grabcad hier genau wie Thingiverse und Github als
+        Beispiel für eine offene Plattform untersucht werden, für die
+        praktische Benutzung von CAD-Dateien von Normteilen im Entwurfsprozess.
+        Wie sich aber während der Untersuchung herausgestellt hat ist Grabcad
+        einerseits nicht offen, andererseits sind die praktischen Vorteile sehr
+        gering, da die Lizenzfrage gänzlich ungeklärt bleibt. Daher an dieser
+        Stelle nur eine Kritik anstelle der umfangreicheren Untersuchung.
+      </div>
+      <h4>
+        <a href="javascript:toggle('beispielinstruct')">Beispiele Grabcad</a>
+      </h4>
+    </div><iframe src="grabcadgallery/index.html" id="gallery" scrolling="no"
+    name="gallery">
+    <p>
+      Your browser does not support iframes.
+    </p></iframe>
+    <div id="text">
+      <h4>
+        <a href="javascript:toggle('grabuebersicht')">Schwerpunkt ↓</a>
+      </h4>
+      <div id="grabuebersicht" style="DISPLAY: none">
+        Im Gegensatz zu Thingiverse und Instructables ist Grabcad eine
+        Plattform, die sich ausschließlich an professionelle Ingenieure und
+        Designer richtet. Ursprünglich gestartet zum Outsourcing von
+        Ingenieursleistungen ist mittlerweile eine große Bibliothek an
+        CAD-Modellen entstanden, die für den professionellen Gebrauch taugt.
+        Das geht von präzisen Modellen eines Eurocontainers, von Normteilen,
+        bis hin zu kompletten Getrieben, Produktionsanlagen und Robotern. Diese
+        Bibliothek mag zwar im Internet frei durchsuchbar sein, ist aber
+        tatsächlich nicht frei zugänglich. Zugriff auf den Download der 3D
+        Modelle haben nur angemeldete Mitglieder. Mitglieder die noch keine
+        Modelle zur Plattform beigetragen haben, dürfen nur eine begrenzte
+        Menge Modelle herunterladen.
+      </div>
+      <h4>
+        <a href="javascript:toggle('grablizenzproblem')">Lizenzprobleme ↓</a>
+      </h4>
+      <div id="grablizenzproblem" style="DISPLAY: none">
+        Das besondere an Grabcad ist, dass jegliche Lizenzfragen der dort
+        erhältlichen Modelle ungeklärt bleiben. Es sind also keine Open
+        Source Lizenzen für die jeweiligen Modelle angegeben, stattdessen
+        bestätigt Grabcad in den AGB, dass alle Rechte beim Verfasser bzw.
+        Einsteller verbleiben. Für eine Plattform, die sich direkt an
+        professionelle Anwender richtet, ist das eine erhebliche rechtliche
+        Unsicherheit, da nicht ausgeschlossen werden kann, dass die dort eher
+        technischen Modelle ebenfalls urheberrechtlichen Schutz genießen.
+        Grabcad hält damit aber seinen Benutzern, Ingenieuren wie auch
+        Auftragsgeber alle Optionen für Lizensierung und Monetarisierung frei,
+        im Sinne von „All Rights Reserved“. Die Verwendung von solchen
+        Modellen kann, trotz dass sie als Grabcadmitglied frei erhältlich
+        sind, ein Urheberrechtsverstoß sein, insbesondere wenn es sich um
+        berufliche, also kommerzielle Nutzung handelt. Letztendlich ist der
+        praktische Vorteil, also der ‚Workflow‘ durch Interoperabilität,
+        Nutzungsfreiheit etc. für den Designer damit dahin. Statt mit
+        Weiterentwicklungen und inhaltlichen Fragen muss man sich mit
+        urheberrechtlichen Fragen auseinandersetzen, ob es sich um ein
+        persönlich schöpferisches Werk handelt und im Zweifelsfalle
+        Lizenzverträge mit dem jeweiligen Urheber des Modells aushandeln.
+      </div>
+      <h4>
+        <a href="javascript:toggle('grabungeeignet')">Keine freien, offenen
+        Werke ↓</a>
+      </h4>
+      <div id="grabungeeignet" style="DISPLAY: none">
+        Das Rechtsverständnis der in Estland ansässigen Firma Grabcad, was
+        ‚private use‘ bedeutet, ist teilweise haarsträubend und im
+        deutschen Rechtsraum nicht anwendbar: <span class="zitattext"><a href=
+        "#citations">"Some examples of private use are educational
+        self-directed learning, creating a concept design for internal use,
+        etc."<span class="zitatnummer">43</span><br></a></span><br>
+        Die Vorstellung, dass Privatgebrauch mit internem Gebrauch bzw.
+        Konzeptdesign, also beruflichen Gebrauch vereinbar ist, muss
+        hinterfragt werden. Das mag für technische Werke, welche nicht
+        urheberrechtlich schützbar sind, anwendbar sein, ist aber bei
+        persönlich schöpferischen Werken wie etwa bei Design, nicht mit dem
+        deutschen Urheberrecht vereinbar. <a href="#anwendbarurheber">Siehe
+        Anwendbarkeit des Urheberrechts für Design.</a>
+        <p>
+          Damit ist Grabcad hauptsächlich ein Outsourcing-Vermittler für
+          Ingenieurs-Dienstleistungen und die Bibliothek ist keine offene
+          Plattform, sondern ein großes Portfolio. Kritisch zu beurteilen ist,
+          dass Urheber Grabcad durch das Einstellen laut den 'Terms of use'
+          automatisch eine kommerziell nutzbare Lizenz für die hochgeladenen
+          Inhalte erteilen. Der Plattformbetreiber erhält also genau die
+          Lizenz für freie Nutzung, die dem gewöhnlichen Grabcad Nutzer
+          verwehrt wird.
+        </p>
+        <p>
+          Die Vermutung liegt nahe, dass Grabcad die Ähnlichkeit mit einer
+          offenen Plattform aus Marketingründen gewählt hat. Zum Beispiel der
+          Begriff "free CAD Models" und die Durchsuchbarkeit der Bibliothek
+          für nicht angemeldete Nutzer, sind Merkmale, die den Eindruck
+          erwecken, es handelt sich ebenfalls um eine Plattform für freie Open
+          Source Entwürfe.
+        </p>
+        <p>
+          Damit nutzt man ein existierendes Momentum im Netz für das
+          eigentliche Geschäft, eine Jobbörse für Ingenieure. Grabcad ist
+          für Ingenieure das, was MyHammer oder Craigslist für Handwerker
+          ist.
+        </p>
+        <p>
+          Dass die Limitierung von Downloads und das Belohnungssystem von
+          Grabcad Nutzer dazu zwingt, eigene Modelle hochzuladen, lädt zum
+          kopieren von echten offenen Plattformen ein. Die Ergebnisse sind dann
+          leider nicht mehr frei Open Source, was in einigen Fällen ein
+          Verstoß gegen die Lizenzbedingungen der Open Source Werke ist. &lt; 
+          /p&gt;
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('grabmoneten')">Geschäftsmodell &amp;
+        Besitzverhältnisse ↓</a>
+      </h4>
+      <div id="grabmoneten" style="DISPLAY: none">
+        Grabcads Geschäftsmodell sind zum einen Konstruktionswettbewerbe, die
+        Firmen über die Plattform veranstalten können. Außerdem verkauft man
+        eine cloudbasierte Kollaborations-Software namens Workbench für
+        Ingenieure, die sich in viele Cadprogramme wie Autocad, Pro Engineer
+        oder Solidworks integrieren lässt. Ähnlich wie die kostenpflichtigen
+        Funktionen von Github kann man hier in geschlossenen Teams an Projekten
+        arbeiten. Workbench ist also eine Art PLM Lösung (Product Lifecylce
+        Management), ein Projektverwaltungs- und Produktivitätswerkzeug für
+        Ingenieure. Auch wenn es in dieser Arbeit um praktische Methoden geht,
+        sind kommerzielle PLM-Lösungen nicht Teil dieser Arbeit.
+        <p>
+          Passend dazu ist der Umstand, dass Grabcad ebenfalls wie Thingiverse
+          von Stratasys gekauft wurde, dem Weltmarktführer für professionelle
+          3D Drucker. Die Aquisition wurde 2014 für 100Millionen Dollar
+          abgeschlossen.<span class="zitattext"><a href=
+          "#citations"><span class="zitatnummer">44</span><br></a></span> Wenig
+          später schon wechselte der Gründer und CEO von Grabcad Hardy
+          Meybaum zur Investment Gruppe ‚Matrix Partners’.
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('grabfazit')">Fazit zu Grabcad ↓</a>
+      </h4>
+      <div id="grabfazit" style="DISPLAY: none">
+        Grabcad als Werkzeug für Designer ist mit Vorsicht zu genießen. Von
+        der Nutzung zum Teilen eigener Modelle ist abzuraten, da keine
+        unabhängigen Lizenzen ausgewählt werden können und die
+        Nutzungsbedingungen nicht für gestalterische Inhalte anwendbar sind.
+        Die rechtlichen Zugeständnisse an die Firma Grabcad für das Hochladen
+        von Objekten stehen in keinem vernünftigen Zusammenhang mit den
+        wenigen Rechten, die Nutzer im Gegenzug zugestanden bekommen.
+      </div>
+      <h3>
+        Wofür ist welche Plattformen geeignet?
+      </h3>
+      <h4>
+        <a href="javascript:toggle('objektart')">Inhaltlicher Schwerpunkt</a>
+      </h4>
+      <div id="objektart">
+        <!--  Radarchart: Schwerpunkt Plattformen -->
+        <iframe src="plattform1/index.html" id="plattform1" width="800" height=
+        "600" scrolling="no" name="plattform1">
+        <p>
+          Your browser does not support iframes.
+        </p></iframe>  <a href="#tabellen"><span class="zitatnummer">Datengrundlage des
+          Diagramms ↓</span><br></a>
+		  Hier sieht man die inhaltlichen Schwerpunkte der
+        Plattformen.<br>   
+        Während Thingiverse etwa größtenteils für 3D Druck Datensätze
+        gedacht ist, ist Grabcad eine Plattform für industrielle Norm- oder
+        Maschinenteile.
+        <p>
+          Siehe dazu auch die Alternativen im jeweiligen Schwerpunktgebiet:
+        </p>
+        <p>
+          <a href="#Thingiverse">Alternativen zu Thingiverse</a>
+        </p>
+        <p>
+          <a href="#Thingiverse">Plattformen ähnlich wie Github</a>
+        </p>
+        <p>
+          <a href="#Thingiverse">Instructables Alternativen</a>
+        </p>
+        
+       
+      </div>
+      <h4>
+        <a href="javascript:toggle('opensource')">Open Source</a>
+      </h4>
+      <div id="opensource">
+        <iframe src="plattform2/index.html" id="plattform2" width="800" height=
+        "600" scrolling="no" name="plattform2">
+        <p>
+          Your browser does not support iframes.
+        </p></iframe> 
+		
+          <a href="#tabellen"><span class="zitatnummer">Datengrundlage des
+          Diagramms ↓</span><br></a>
+        
+		Dieses Diagramm zeigt die Lizenzsmöglichkeiten der
+        untersuchten Plattformen und Alternativen. Die meisten der untersuchten
+        Plattformen unterstützen Open Source Lizenzen. Die Hälfte davon
+        lizensiert aber doppelt, das heißt nebenher verlangt die Plattform
+        selber eine zusätzliche Lizenz mit weitergehenden Rechten als die
+        gewählte Open Source Lizenz.
+        <p>
+          Die nächstgrößere Gruppe gewährt gar keine
+          Weiterverwendungsrechte, z.B. wenn es sich um Magazine oder
+          kommerzielle Dienstleister handelt.
+        </p>
+        
+      </div>
+      <div id="andereplattformen">
+        <h3>
+          Andere Plattformübersichten
+        </h3>
+      </div>
+      <h4>
+        <a href="javascript:toggle('anderelisten')">Andere Listen ↓</a>
+      </h4>
+      <div id="anderelisten" style="DISPLAY: none">
+        <h5>
+          Die Reprap Wiki Liste für 3D druckbare Objekte
+        </h5>Das Reprap Wiki hat eine sehr umfangreiche Liste von Plattformen,
+        Datenbanken, Marktplätzen etc. die sich aber auf Modelle für den 3D
+        Druck beschränkt. Dabei werden auch historische, nicht mehr
+        verfügbare Plattformen dokumentiert, was in der Übersicht in diesem
+        Dokument nicht der Fall ist. Die Liste ist zwar Open Source, allerdings
+        sind die Anforderungen der GNU FDL zu umfangreich und zu komplex, um
+        die Liste hier abbilden zu können. Daher bleibt es bei diesem
+        Link:<br>
+        <span class="zitattext"><a href=
+        "http://reprap.org/wiki/Printable_part_sources">http://reprap.org/wiki/Printable_part_sources</a><a href="#citations"><span class="zitatnummer">45</span><br>
+        </a></span>
+      </div>
+      <div id="ausschluss"></div>
+      <h4>
+        <a href="javascript:toggle('others')">Andere Plattformen und
+        Ausschlusskriterien für die Untersuchung ↓</a>
+      </h4>
+      <div id="others" style="DISPLAY: none">
+        <h5>
+          Suchmaschinen für Entwürfe, 3d Modelle, Bauteile
+        </h5>
+        <h6>
+          yeggi.com<a href="#citations"><span class="zitatnummer">46</span></a>
+        </h6>
+        <h6>
+          yobi3d.com<a href="#citations"><span class=
+          "zitatnummer">47</span></a>
+        </h6>
+        <h6>
+          bld3r.com<a href="#citations"><span class="zitatnummer">48</span></a>
+        </h6>bld3r nennt sich „a 3D Printing Social Network“, ist aber eher
+        ein Aggregator wie zum Beispiel Reddit oder Google News, nur eben für
+        3D Modelle. bld3r zeigt also Modelle von Thingiverse, Github, etc. an
+        und ermöglicht aber auch das direkte Hochladen auf bld3r. Besonders
+        ist, dass die gesamte Webseite selber als Open-Source Projekt
+        entwickelt wird und der Code auf Github verfügbar ist.
+        <h5>
+          3D-Druck Marktplätze mit Bibliothek
+        </h5>Überall, wo eine neue Bewegung entsteht, gibt es Jemanden, der
+        ein Geschäftsmodell dazu erfindet. Eine Reihe von Webseiten vertreibt
+        3D-Modelle zum selber ausdrucken. Da diese Modelle von Dritten erstellt
+        und hochgeladen werden, welche auch den Preis festlegen können,
+        handelt es sich um einen Marktplatz. Gegenüber freien Plattformen wie
+        Thingiverse, Youmagine oder Treasureisland, wird mit besserer Qualität
+        (garantiert druckbar etc.) geworben und mit einigen kostenfreien
+        Modellen. Lizenzrechtlich problematisch wird es, wenn ein Entwurf für
+        die kommerzielle Nutzung verwendet werden soll, oder mehr als ein Druck
+        angefertigt wird. Die meisten Plattformen dieser Art gestatten in Ihren
+        Lizenzen nur private Nutzung der Modelle. Für Gestalter ist das also
+        keine Quelle für vormodellierte Bauteile, sondern lediglich eine
+        Verkaufsplattform. Ob der Verkauf für die Beteiligten aber finanziell
+        rentabel ist, lässt sich schwer einschätzen - in jedem Fall erleiden
+        sie aber starken Konkurrenzdruck durch Plattformen mit freien Modellen
+        wie Thingiverse, Youmagine oder Treasure Island.
+        <h6>
+          myminifactory.com<a href="#citations"><span class=
+          "zitatnummer">49</span></a>
+        </h6>
+        <h6>
+          redpah.com<a href="#citations"><span class=
+          "zitatnummer">50</span></a>
+        </h6>
+        <h6>
+          cults3d.com<a href="#citations"><span class=
+          "zitatnummer">51</span></a>
+        </h6>
+        <h6>
+          createthis.com<a href="#citations"><span class=
+          "zitatnummer">52</span></a>
+        </h6>
+        <h6>
+          www.cuboyo.com<a href="#citations"><span class=
+          "zitatnummer">53</span></a>
+        </h6>
+        <h5>
+          3D-Druck Dienstleister mit Bibliothek
+        </h5>
+        <h6>
+          uformit.com<a href="#citations"><span class=
+          "zitatnummer">54</span></a>
+        </h6>Verkaufsplattform für parametrisierten Schmuck. Freie Designer
+        können ein veränderbares Modell entwickeln, dass dann von uformit
+        produziert und verkauft wird.
+        <h5>
+          Proprietäre CAD-Bauteilebibliotheken
+        </h5>
+        <h6>
+          traceparts.com<a href="#citations"><span class=
+          "zitatnummer">55</span></a>
+        </h6>
+        <h5>
+          Marktplätze für CG 3D-Modelle (Stock Grafiken)
+        </h5>
+        <h6>
+          turbosquid.com<a href="#citations"><span class=
+          "zitatnummer">56</span></a>
+        </h6>
+        <h6>
+          cgtrader.com<a href="#citations"><span class=
+          "zitatnummer">57</span></a>
+        </h6>
+        <h6>
+          tf3dm.com<a href="#citations"><span class="zitatnummer">58</span></a>
+        </h6>
+        <h5>
+          Marktplätze für 3D Modelle von Möbeln und Innenarchitektur
+        </h5>
+        <h6>
+          www.sweethome3d.com<a href="#citations"><span class=
+          "zitatnummer">59</span></a>
+        </h6>
+      </div>
+      <h2>
+        Lizenzen
+      </h2>
+      <h3>
+        Was ist eine Lizenz?
+      </h3>Eine Lizenz ist die Voraussetzung für eine kostenfreie Weitergabe
+      von Werken im Internet. Aufgrund des Urheberrechts würde die bloße
+      Veröffentlichung ein Reproduzieren und Weiterverwenden noch nicht
+      erlauben, weil wenn nicht anders vermerkt davon ausgegangen wird, dass
+      keine weiteren Rechte erteilt werden, also ‚all rights reserved’. Der
+      Author kann aber sein Werk als gemeinfrei erklären, also alle Rechte
+      daran aufgeben, was ‚no rights reserved’ entspricht.
+      <p>
+        Wer nicht alle Rechte aufgeben möchte, sondern seine Werke nur unter
+        bestimmten Bedingungen teilen möchte, kann eine differenzierte Lizenz
+        wählen, was soviel wie ‚some rights reserved‘ bedeutet.
+      </p><br>
+      Um dem Author den juristischen Aufwand dieser lizenzrechtlichen Frage zu
+      vereinfachen, gibt es standardisierte Lizenztexte, wie zum Beispiel die
+      Creative Commons (CC) Lizenzen oder die Lizenz Freie Kunst (LAL) und
+      viele Andere. Grundsätzlich ist eine Lizenz kein Ersatz für
+      Urheberrechte, sondern eine Ergänzung. Die Urheberrechte des Authors
+      sind, zumindest in Deutschland unabtretbar. Der Author hat also die
+      Möglichkeit sogar mehrere „einfache“, d.h. nicht ausschließliche
+      Lizenzen zu verteilen, einschließlich Lizenzen zu unterschiedlichen
+      Bedingungen solange es sich dabei um keine exklusiven Lizenzen handelt.
+      Es ist also ohne weiteres möglich, ein Werk kommerziell zu nutzen, z.B.
+      Drucke eines Werkes zu verkaufen, aber auch frei auf digitalem Wege zur
+      Verfügung zu stellen. Dem gegenüber stehen nur die
+      Rechte-Verwertungsgesellschaften, die meist eine exklusive Lizenz
+      (ausschließliche Verwertung) verlangen und damit die Möglichkeiten des
+      Urhebers, über sein Werk zu verfügen, einschränken. „Frei“ wie in
+      <span class="zitattext">„Freie Lizenzen“<a href=
+      "#citations"><span class="zitatnummer">60</span></a></span> kann
+      grundsätzlich verschiedene Bedeutungen haben. Das geht von Erlaubnis zur
+      Nutzung, Veränderung mit Namensnennung bis hin zu kommerzieller
+      Weitergabe ohne jegliche Nutzungseinschränkung.<span class=
+      "zitattext"><a href="#citations"><span class=
+      "zitatnummer">61</span></a></span>
+      <div id="anwendbarurheber">
+        <h3>
+          Anwendbarkeit des Urheberrechts für Design
+        </h3>
+      </div>Das Urheberrecht ist ein Schutzrecht des Immaterialguts. Es
+      entsteht automatisch bei der Verfassung eines urheberrechtlichen Werkes
+      und ist nicht übertragbar. Für industrielle Produkte, Verfahren,
+      technische Umsetzung etc. kommt das Urheberrecht nicht zur Anwendung,
+      hier existieren gewerbliche Schutzrechte wie das Patent, Gebrauchsmuster
+      und Geschmacksmuster und die Wettbewerbsrechte wie Schutz von Name,
+      Bezeichnung, Kennzeichen und Ruf.
+      <p>
+        Während das Produkt und die Funktionsweise an sich also nicht
+        urheberrechtlich geschützt sind, jedoch der Entwurf,
+        Grafiken, die Darstellung und Beschreibung der Idee und die
+        angehängten Texte urheberrechtlich geschützt sein. Dazu muss das Werk
+        nach § 2 Abs. 2 UrhG eine „persönliche geistige Schöpfung“ sein
+        und die Merkmale „Originalität“ und „Schöpfungshöhe“
+        vorweisen.
+      </p>
+      <p>
+        Ähnlich wie früher schon der Fotografie, wurde dem Design in der
+        Vergangenheit, die künstlerische Anerkennung verwehrt. Aber Werbefilme,
+        Plakate, Slogans, Jingles etc. sind im Rahmen der 'sogenannten' kleinen
+        Münze urheberrechtlich schutzwürdig, was die Auslegung der
+        Gestaltungshöhe im Werkbegriff des UrhG verdeutlicht. Ein Urteil des
+        BGH vom 13.11.2013 <span class=
+      "zitattext">( AZ I ZR 143/12 )<a href="#citations"><span class=
+      "zitatnummer">62</span></a></span> hat die Position von Design als
+        Werk deutlich bestätigt, indem festgestellt wurde, dass an die
+        angewandte Kunst kein anderer Maßstab gelegt werden sollte, als an die
+        zweckfreie Kunst. Am
+        Bild aus den Prozessunterlagen lässt sich interpretieren, wie weit der 
+        'Werkbegriff' des UrhG reicht:
+      </p><img src="geburtstagszug.jpg" width="100%">
+      <p>
+        Gegenüber dem Geschmacksmuster für Design hat das Urheberrecht eine
+        Reihe von Vorteilen. Es hat einen längeren Schutzzeitraum als Patent,
+        Gebrauchs- und Geschmacksmuster und es tritt automatisch, ohne
+        Anmeldung und Gebühren in Kraft.
+      </p>
+      <p>
+        Das Urheberrecht ist außerdem ein persönliches Recht, was es von
+        gewerblichen Schutzrechten unterscheidet, die sich auf Körperschaften
+        beziehen. Die rechtliche Auffassung, ob Design unter das Urheberrecht
+        fällt oder nicht, hängt also auch davon ab, ob der Designer als
+        Einzelperson Auftritt und eine eigenständige persönliche Leistung
+        erbringt. Ein selbständiger Designer, der ohne Auftrag aus eigener
+        Motivation einen Entwurf anfertigt, ist zweifelsohne Urheber im Sinne
+        des UrhG. Diese Auffassung vertritt auch die auf Designrecht spezialisierte 
+		Urheberrechtsanwältin Margarete May.<span class="zitattext"><a href="#citations"><span class=
+        "zitatnummer">63</span></a></span>
+      </p>
+      <h3>
+        Entstehungsgeschichte der General Public License
+      </h3>
+      <h4>
+        <a href="javascript:toggle('gnuprojekt')">Das GNU Projekt ↓</a>
+      </h4>
+      <div id="gnuprojekt" style="DISPLAY: none">
+        Die Idee, standardisierte Lizenztexte anzubieten bzw. diese auch zu
+        internationalisieren ist relativ jung und stammt aus der
+        Softwareentwicklung. Ein Vorgänger, auf den die heute populären
+        Lizenzen der CC und FAL zurückgehen, ist die GNU General Public License (GPL).
+        <p>
+          Der politische Aktivist und Softwareentwickler Richard Stallman
+          arbeitete in den 70er Jahren in den Al-Labs am MIT.<span class=
+          "zitattext"><a href="#citations"><span class=
+          "zitatnummer">64</span></a></span> Bis dahin war es durchaus üblich,
+          dass Softwareentwickler im Wissenschaftsbetrieb ihren Quellcode
+          untereinander austauschten.
+        </p>
+        <p>
+          Mit dem Aufkommen des Personal Computers änderte sich aber nicht nur
+          die typische Nutzerschaft vom Wissenschaftler oder Programmierer zum
+          unbedarften Endnutzer. Es entstanden auch eine Reihe von Firmen, die
+          sich darauf spezialisierten, Software für diese Heimcomputer zu
+          entwickeln. Neben dem Verkauf von Datenträgern und Einzellizenzen
+          für die Nutzung einer Software entstanden schnell auch
+          Geschäftsmodelle, die per Benutzerlizenz, Zugriffslizenz,
+          Lizenzzeitraum etc. die Benutzung einschränkten.
+        </p>
+        <p>
+          Stallman beschreibt eine „destruktive“ Entwicklung, bei der
+          wissenschaftliche Kollegen, Absolventen etc. aufhörten ihre
+          Programme in Quellcode zur Verfügung zu stellen, sondern Unternehmen
+          gründeten, die nicht mehr lesbaren Maschinencode, sogenannten
+          Binärcode unter verschiedenen Lizenzbedingungen auslieferten.
+        </p>
+        <h6>
+          […] „Extracting money from users of a program by restricting
+          their use of it is destructive because the restrictions reduce the
+          amount and the ways that the program can be used. This reduces the
+          amount of wealth that humanity derives from the program. When there
+          is a deliberate choice to restrict, the harmful consequences are
+          deliberate destruction. „ […] “Control over the use of one's
+          ideas” really constitutes control over other people's lives; and it
+          is usually used to make their lives more difficult.“ […]<a href=
+          "#citations"><span class="zitatnummer">3</span></a>
+        </h6>
+        <p>
+          Stallman formulierte seine Ideen kompromisslos und für Kritiker zu
+          radikal, traf aber damit den Nerv von vielen Entwicklern. Deshalb
+          startete er 1983 das GNU (Gnu is not unix) Softwareprojekt, um den
+          „den Geist der Kooperation, der in den frühen Jahren der
+          Computergemeinschaft vorgeherrscht hatte, wieder zu
+          beleben“.<span class="zitattext"><a href="#citations"><span class=
+          "zitatnummer">65</span></a></span>
+        </p>
+      </div>
+      <div id="fourfreedoms">
+        <h4>
+          <a href="javascript:toggle('fourfreedomstog')">Die vier Freiheiten
+          von ‚Free Software‘ ↓</a>
+        </h4>
+        <div id="fourfreedomstog" style="DISPLAY: none">
+          Wenig später entstand daraus die Free Software Foundation (FSF), die
+          Programmierer beschäftigte, um nicht weniger als ein nach der
+          Philosophie Stallmans komplett freies Betriebssystem und
+          dazugehörige Software zu erschaffen. Dies sind die von Stallman postulierten <span class=
+          "zitattext">vier Freiheiten<a href="#citations"><span class=
+          "zitatnummer">66</span></a></span> die freie Software kennzeichnen
+          sollten:
+          <ol>
+            <li>Freiheit zur Nutzung: Unbegrenzt und egal in welchem Kontext.
+            </li>
+            <li>Freiheit die Funktionsweise zu erlernen und für sich zu
+            verändern.
+            </li>
+            <li>Freiheit Kopien zu verteilen, um seinem Nachbarn zu helfen.
+            </li>
+            <li>Freiheit zur Verbesserung, Veröffentlichung und Verteilung der
+            Verbesserungen.
+            </li>
+          </ol>Um diese Freiheiten rechtlich zu garantieren, arbeitete man an
+          einer standardisierten Lizenz für alle Softwareteile, die 1989 als
+          GPL (Gnu Public License) erschien, eine Lizenz die für alle FSF
+          Entwicklungen eingesetzt werden sollte. Bis dahin war für jedes
+          Stück Software der FSF ein einzelner Lizenztext geschrieben, der
+          aber bereits die wesentlichen Teile der GPL enthielt.
+          <ul>
+            <li>Rechte: Uneingeschränkte Nutzung, Kopieren, Verändern,
+            Weitergeben durch Lizenznehmer. Kommerzieller Vertrieb des Werks
+            ist Jedem erlaubt.
+            </li>
+            <li>Pflichten: Copyleft statt Copyright bedeutet, das alle Derivate
+            unter denselben Bedingungen wie das ursprüngliche Werk
+            weitergegeben werden müssen.
+            </li>
+          </ul>
+          <p>
+            Ergebnisse des GNU Projekts sind unter anderem der Linux Kernel und
+            das daraus entstandenen Betriebssystem.
+          </p>
+        </div>
+      </div>
+      <h4>
+        <a href="javascript:toggle('gplsoftware')">GPL - Software im Fokus
+        ↓</a>
+      </h4>
+      <div id="gplsoftware" style="DISPLAY: none">
+        Die GPL ist für Software entwickelt worden. Viele Formulierungen, wie
+        Quellcode, Programm oder Bibliothek sind nur im Software-Kontext
+        verständlich. Stallman hat dafür eine Begründung, die eine spätere
+        Notwendigkeit für Hardware-Lizenzen aber nicht vollständig
+        ausschließt:
+        <p><span class="zitattext">
+          Free software is often available for zero price, since it often costs
+          you nothing to make your own copy. Thus the tendency to confuse
+          ``free'' with ``gratis''. For hardware, the difference between
+          ``free'' and ``gratis'' is more clear-cut; you can't download
+          hardware through the net, and we don't have automatic copiers for
+          hardware. (Maybe nanotechnology will provide that capability.) […]
+          Because copying hardware is so hard, the question of whether we're
+          allowed to do it is not vitally important. I see no social imperative
+          for free hardware designs like the imperative for free software.
+          <a href="#citations"><span class="zitatnummer">67</span></a></span>
+        </p>
+        <p>
+          Interessanterweise ist diese Zeit, in der Rohstoffe fast nichts kosten
+          und Kopiergeräte existieren, die praktisch ohne menschliche Arbeit
+          Gegenstände herstellen können, früher gekommen als Stallman es
+          erwartet hat. 3D Drucker, Lasercutter, CNCfräsen und die Rohstoffe
+          dafür haben sich in den letzten Jahrzehnten um mehrere
+          Größenordnungen vergünstigt.
+        </p>
+        <p>
+          Die GPL ist daher Vorreiter für viele ähnliche Lizenzen mit anderen
+          inhaltlichen Schwerpunkten wie Design, Kunst, Musik, Kultur,
+          wissenschaftliche Arbeiten, Dokumentation und Literatur.
+        </p>
+      </div>
+      <h3>
+        Lizenzübersicht für Design, Kunst, kulturelle Werke
+      </h3>
+	   <a href="#tabellen"><span class="zitattext">Tabelle mit Lizenzen für generische Werke und klassischen Software-Lizenzen im Vergleich ↓</span><br></a>
+      <h4>
+        <a href="javascript:toggle('creativecommons')">Creative Commons ↓</a>
+      </h4>
+      <div id="creativecommons" style="DISPLAY: none">
+        Fünfzehn Jahre später, inspirierte das GNU Manifesto den 
+		Rechtswissenschaftler Lawrence Lessig, an der Standford Law School, die
+		Prinzipien der GPL auf Werke außerhalb des Software-Kontexts, zu übertragen,
+		insbesondere auf Kunst, Musik und kulturelle Werke.
+		Dies führte zur Gründung der Creative Commons Initiative.
+        Lessig sieht dafür eine dringende Notwendigkeit eben
+        durch die digitale Vernetzung, was er in einem Blogbeitrag erklärt,
+        der 2005 auf der Webseite der Organisation veröffentlicht wurde:
+        <p><span class="zitattext">
+          „If copyright regulates “copies,” then while a tiny portion of
+          the uses of culture off the net involves making “copies,” every
+          use of culture on the net begins by making a copy. In the physical
+          world, if you read a book, that’s an act unregulated by the law of
+          copyright, because in the physical world, reading a book doesn’t
+          make a copy. On the Internet, the same act triggers the law of
+          copyright, because to read a book in a digital world is always to
+          make a “copy.” Thus, as the world moves online, many of the
+          freedoms (in the sense of life left unregulated by the law of
+          copyright) disappear. Every use of copyrighted content at least
+          presumptively triggers a requirement of permission. The failure to
+          secure permission places a cloud of uncertainty over the legality of
+          the use.“ <a href="#citations"><span class=
+          "zitatnummer">68</span></a></span>
+        </p>
+		Durch den digitalen Akt des Kopierens, der also jedem über das
+        Internet aufgerufenen Werk anhaftet, entsteht eine unter
+        urheberechtlichen Gesichtspunkten lizenzbedingende Situation. Das mag
+        für den Privatmenschen noch nicht kritisch sein, da privat ein
+        juristisch, urheberrechtlicher Freiraum existiert, kreiert aber für
+        Institutionen, Organisationen und Firmen ein reales rechtliches
+        Problem.
+      </div>
+      <h4>
+        <a href="javascript:toggle('artlibre')">Art Libre ↓</a>
+      </h4>
+      <div id="artlibre" style="DISPLAY: none">
+        Den Schwung der Free Software Bewegung nutzend, gab es aber auch
+        Künstler und Aktivisten die eine Chance in der GPL gesehen haben, für
+        die Entstehung einer Kultur wo Kunst, Musik und Kultur als Allgemeingut
+        behandelt wird bzw. sich den bisher gültigen Regeln des Markts
+        entzieht.
+        <p>
+          Noch kurz vor Lessigs „Creative Commons“ entstand eine Bewegung
+          um die Pariser Künstler Antoine Moreau und Isabelle Vodjdani die
+          sich im Jahre 2000 zu mehreren öffentlichen Gipfeln unter dem Titel
+          „Copyleft Attitude“ treffen. Das Ergebnis ist die Lizenz Artlibre
+          bzw. in der englischen Fassung die Free Art License (FAL).
+        </p>
+        <p><span class="zitattext">
+          „Dort, wo die Urheberrechte im Bereich von Kunst und Literatur zu
+          einer Beschränkung der Verwendung ihrer Werke führen, bemüht sich
+          die Lizenz « Freie Kunst » effizient zu intervenieren, um den
+          Zugang zur Kunst zu erleichtern. Die Lizenz vertritt folgende
+          Absichten : Vereinfachung des Zuganges zu den Ressourcen eines
+          Kunstwerkes sowie die Ermächtigung der Allgemeinheit zur
+          Weiterverwendung ebensolcher. Von Kunst Nutzen zur grösstmöglichen
+          Freude aller zu ziehen, neu Bedingungen des künstlerischen Schaffens
+          zu erstellen, um die Möglichkeiten des Schaffens zu vervielfachen,
+          wobei die Urheberrechte in ihrer Gültigkeit unangetastet
+          bleiben.“<a href="#citations"><span class=
+          "zitatnummer">69</span></a></span>
+        </p>
+		Die FAL 1.3 entspricht in ihrer Wirkung der Creative Commons
+        Lizenz BY-SA 4.0. Lizensierte Werke der einen oder anderen Lizenz
+        können also zusammengeführt, verändert und unter einer von beiden
+        Lizenzen weitergegeben werden.
+      </div>
+      <h4>
+        <a href="javascript:toggle('gemeinsamkeitenlalacc')">Gemeinsamkeiten
+        und Unterschiede LAL und CC ↓</a>
+      </h4>
+      <div id="gemeinsamkeitenlalacc" style="DISPLAY: none">
+        Im Unterschied zur LAL ist die CC keine einzelne Lizenz, sondern eine
+        Organisation, die eine Sammlung von verschiedenen Lizenzwerken
+        betreibt. Verschiedene Merkmale der CC können miteinander kombiniert
+        werden, so das z.B. eine Lizenz mit oder ohne Copyleft entsteht,
+        die kommerziell nutzbar ist oder diese Nutzung verbietet. Die LAL ist dagegen
+        eine einzelne Lizenz mit einer festen Konfiguration an Bedingungen und Rechten.
+        Beide Lizenzen sind weniger restriktiv als das Vorbild, die GPL. Die
+        Creative Commons Lizenz vermeidet den politisierenden Begriff
+        „Copyleft“ zugunsten der deskriptiveren Bezeichnung „share
+        alike“, was „gleich teilen“ bzw. „auf gleiche weise
+        weitergeben“ bedeutet.
+      </div>
+      <h4>
+        <a href="javascript:toggle('bierware')">Kritik der Rechtsförmlichkeit:
+        Bierware ↓</a>
+      </h4>
+      <div id="bierware" style="DISPLAY: none">
+        Eine vielverbreitete Kritik an der GPL ist auch die Komplexität des
+        Lizenztexts, der weitestgehend in juristischer Fachsprache gehalten
+        ist, mit wenig Rücksichtnahme auf die eigenen Nutzer. Während die GPL
+        sich eher wie eine lange Auflistung aller ausgeschlossenen Nutzungen
+        liest, um für jede Eventualität eine Antwort interpretieren zu
+        können, definiert sich die LAL dagegen in erster Linie über die kurz
+        formulierten inklusiven Freiheiten der Lizenz. Die GPL hat damit zwar
+        auch international wenig Rechtsunsicherheit zu befürchten, ist aber
+        für nicht-Juristen schlecht lesbar und damit ausgerechnet für die
+        Nutzer der Lizenz kompliziert zu verstehen. Die Creative Commons Lizenzen 
+		sind im Originalwortlaut ähnlich komplex für Nicht-Juristen, die
+        Organisation umgeht aber dieses Fettnäpfchen indem sie
+        Logos für die verschiedenen Lizenzmodule und komplette Lizenzen
+        entworfen hat. Auch wird der Lizenztext dem Werk nicht beigefügt wie es bei
+        der GPL zwingend der Fall ist, sondern nur verlinkt und zuerst in vereinfachter
+        „menschenlesbarer“ Form darstellt. Der volle Lizenztext ist dann
+        über diese Zusammenfassung abrufbar. <p>Die Free Art License ist
+        besonders hervorzuheben wegen ihrer direkten Formulierung und dadurch
+        leichten Verständlichkeit. Zudem ist sie relativ kurz. Trotzdem ist
+        bisher keine Rechtsauffassung bekannt, in der die FAL als rechtlich
+        unsicher bezeichnet wird. Wer also nicht blind dem langen Creative Commons
+        Lizenztext vertrauen mag und wert darauf legt die Lizenz für seine
+        Werke komplett zu kennen, dem ist die FAL empfohlen. Einschränkend
+        muss man aber sagen, dass die aktuellste Version der FAL international
+        bisher nur in Version 1.3 vorliegt, die Deutsche ist noch auf 1.1 und daher
+        leicht unterschiedlich gegliedert. Zudem ist die FAL eine Lizenz mit Copyleft und
+        erlaubt kommerzielle Weiternutzung. Sie entspricht der CC-Lizenz  'CC-BY-SA'.
+		Wenn man also andere Lizenzrechte gewähren möchte als in dieser Version,
+        stehen nur die CC Lizenzen zur Verfügung.</p>
+        <p>
+          Als Reaktion auf die Komplexität der GPL, sind außerdem Lizenzen
+          wie die WTFPL (What the Fuck Public License) oder die
+          Beerware-License entstanden. Folgende Lizenz ist aus Abneigung der
+          Rechtsförmlichkeit der GPL entstanden:
+        </p>
+        <p>
+          <span class="zitattext">[…] I think the GNU license is a joke, it
+          fights the capitalism it so much is against with their own tools, and
+          no company is ever going to risk any kind of proximity to so many so
+          vague statements assembled in a license. […]<br>
+          /*<br>
+          *----------------------------------------------------------------------------<br>
+
+          * "THE BEER-WARE LICENSE" (Revision 42):<br>
+          * &lt;phk@FreeBSD.ORG&gt; wrote this file. As long as you retain this notice you<br>
+          * can do whatever you want with this stuff. If we meet some day, and
+          you think<br>
+          * this stuff is worth it, you can buy me a beer in return.
+          Poul-Henning Kamp<br>
+          *----------------------------------------------------------------------------<br>
+
+          */ http://people.freebsd.org/~phk/ *<a href="#citations"><span class=
+          "zitatnummer">70</span></a></span>
+        </p>
+      </div>
+      <h3>
+        Lizenzbestandteile
+      </h3><iframe src="lizenz1/index.html" scrolling="no" id="lizenz1" name=
+      "lizenz1">
+      <p>
+        Your browser does not support iframes.
+      </p></iframe>
+	   <a href="#tabellen"><span class="zitatnummer">Datengrundlage des
+          Diagramms ↓</span><br></a>
+      <h4>
+        <a href="javascript:toggle('attribution')">Namensnennung ↓</a>
+      </h4>
+      <div id="attribution" style="DISPLAY: none">
+        Namensnennung bzw. englisch Attribution, in den CC Lizenzen abgekürzt
+        mit „by“ , bedeutet, dass der Urheber auch bei jeder Weitergabe
+        oder Modifikation des Werkes genannt werden muss. Meistens geschieht
+        der Hinweis auf den Urheber zusammen mit dem Hinweis auf die Lizenz,
+        z.B. wenn es sich um eine Weitergabe unter gleichen Bedingungen
+        handelt. Wird ein bereits modifiziertes Werk erneut weitergegeben,
+        müssen mitunter mehrere Generationen von Urhebern genannt werden.
+        Namensnennung kann daher bei häufig veränderten Werken oder bei
+        Mithilfe von vielen Personen aufwändig sein. Auch bei besonderen
+        Formen von Werken, Theaterstücke, Vorträge oder Performances ist der
+        Hinweis auf den Urheber und die Lizenz vonnöten, was sich manchmal als
+        schwierig gestaltet.
+      </div>
+      <h4>
+        <a href="javascript:toggle('copyleft')">Copyleft - Weitergabe unter
+        gleichen Bedingungen ↓</a>
+      </h4>
+      <div id="copyleft" style="DISPLAY: none">
+        Copyleft bedeutet Weitergabe unter gleichen Bedingungen. In den
+        CC-Lizenzen wird diese Klausel „sa“ bzw. „share alike“ genannt.
+        Copyleft wirkt auf alle kopierten oder veränderten Werke, indem diese
+        ebenfalls unter der ursprünglichen oder einer gleichbedeutenden Lizenz
+        stehen müssen. Damit wird sichergestellt, dass Projekte nicht
+        privatisiert weiter bearbeitet werden und der ursprüngliche Autor und
+        die Allgemeinheit genau so profitieren können an Verbesserungen oder
+        Erweiterungen. In wie weit sich Copyleft auch auf Werke auswirkt, die
+        zum größten Teil aus Anderem bestehen oder das Werk auf einer anderen
+        Ebene zitieren, sind die Lizenzen unterschiedlich ausgelegt. Z.B.
+        stellt sich die Frage, ob ein Katalog, der Fotos von Gegenständen
+        enthält, die unter der CC-SA Lizenz stehen ebenfalls unter der Lizenz
+        veröffentlicht werden müsste.
+        <p>
+          Die GPL hat Copyleft erfunden und damit das effektiv am schärfsten
+          wirkende Copyleft unter den freien Lizenzen. Der Software-Kontext
+          bewirkt, dass Projekte und Codeteile teilweise nicht
+          zusammengeführt oder zusammen benutzt werden, obwohl beide unter
+          einer freien Lizenz stehen. Copyleft, also das verbindliche
+          Veröffentlichen von veränderten Versionen des Werkes unter
+          denselben Bedingungen, erfordert eine prinzipielle
+          Bedeutungsgleichheit der Lizenzen, wenn man zwei Werke miteinander
+          kombinieren will. Ist diese Kompatibilität der Lizenzen nicht
+          gegeben, verbietet das Projekte, die ihre Quellen aus unterschiedlich
+          lizensierten Werken beziehen. Kritiker bezeichnen diesen Effekt als
+          Schisma zwischen den Inhalten unter verschiedenen Lizenzen.<a href=
+          "#citations"><span class="zitatnummer">71</span></a> In der Creative
+          Commons Lizenz ist daher eine Ausnahme für „Kollektionen“
+          vorgesehen, auf die share-alike nicht angewendet werden muss ,wenn
+          Werke nur einen kleinen Teil der Kollektion darstellen und nicht
+          modifiziert wurden.
+        </p>
+        <p>
+          Die FAL hat ebenfalls ein Copyleft, dass eine Möglichkeit offen
+          lässt, das Werk in eine größere Arbeit zu integrieren ohne dass
+          diese vom copyleft betroffen ist. Die Vorraussetzung dafür ist, dass
+          das Werk an sich noch einzeln unter der FAL abrufbar ist.<a href=
+          "#citations"><span class="zitatnummer">72</span></a>
+		 </p> 
+		 <p>Dem Urheber
+          allein ist es möglich, eine Lizenz zu erteilen, die von 'share-alike'
+          nicht betroffen ist. Diese Lizenz existiert dann parallel zu der von
+          ihm gewählten freien Lizenz. Dem Urheber ist es damit möglich, ein
+          Derivat von seinem Werk nicht mehr unter der freien Lizenz zu
+          veröffentlichen. Dieses Recht kann er auch auf einen Dritten
+          übertragen, zum Beispiel gegen eine besondere Vergütung.
+		  Es gibt also keine 'one way' Probleme durch das Copyleft, welche die 
+		  Welt in Open Source und Closed Source aufteilen. Um den Weg von 
+		  Open Source wieder zu verlassen, muss ein Derivat von, bzw. mit Erlaubnis
+		  des Autors hergestellt werden. Dieselbe Erlaubnis, die man auch braucht
+		  um mit etablierten 'Closed Source'-Methoden ein Werk eines Autors 
+		  zu lizensieren.
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('noncommercial')">Nicht kommerziell ↓</a>
+      </h4>
+      <div id="noncommercial" style="DISPLAY: none">
+        Der Zusatz NC, also non-commercial untersagt die kommerzielle Nutzung.
+        Durch die Koexistenz von freier Lizenz und Urheberrechten besitzt der
+        Urheber selber dann als einziger noch eine Lizenz zur kommerziellen
+        Verbreitung und sichert sich dadurch gegen einen Wettbewerb mit
+        Plagiaten ab. Dieses Recht kann der Urheber auch anderen Lizenznehmern
+        erteilen bzw. verkaufen. Es entsteht dabei eine parallele Lizenz zur
+        kommerziellen Nutzung. In der Praxis umgeht diese parallele
+        Lizensierung durch den Urheber dann auch die share-alike Klausel, da
+        die Nutzung nicht auf der freien Lizenz basiert und damit nicht daran
+        gebunden ist.
+        <p>
+          Kommerzielle Nutzung kann je nach Rechtsraum aber unterschiedlich
+          ausgelegt werden. In Deutschland ist zum Beispiel eine Abgabe zum
+          Selbstkostenpreis auch eine kommerzielle Nutzung.
+		  Auch Verkäufe zugunsten
+          gemeinnütziger Vereine sind nach deutscher Rechtsauffassung
+          kommerziell. Im Angelsächsischen Rechtsgebrauch ist kommerzielle
+          Nutzung dagegen etwas freier gefasst und beschäftigt sich mit
+          Profit-Generierung. Auch hier kann aber eine Nutzung durch eine
+          gemeinnützige Organisation, die damit Geld bzw. Spenden einsammelt,
+          direkt mit der kommerziellen Nutzung durch den Urheber im Wettbewerb
+          stehen und als kommerzielle Nutzung wahrgenommen werden.<a href=
+          "#citations"><span class="zitatnummer">73</span></a>
+        </p>
+      </div>
+      <h4>
+        <a href="javascript:toggle('prakticalmod')">Keine Derivate ↓</a>
+      </h4>
+      <div id="prakticalmod" style="DISPLAY: none">
+        Dieser Lizenzzusatz ist für Werke, die weitergegeben, aber nicht
+        verändert werden dürfen. Für Textwerke die eine persönliche Meinung
+        enthalten, Kolumnen, Editoriale, ist die ND-Klausel (no derivates)
+        denkbar. In der Praxis entspricht die ND-Klausel für Entwürfe aber
+        nicht den Standards für freie kulturelle Werke. Siehe im Kapitel
+        <a href="#linkderiv">Vorgehensweise bei der Lizenzwahl: Ist das Werk eine Beurteilung, Meinung oder ein Gutachten?</a>
+      </div>
+      <h3>
+        Verwertungsgesellschaften
+      </h3>Mitglieder einer Verwertungsgesellschaft können freie Lizenzen in
+      der Regel nicht benutzen, weder als Lizenznehmer, noch als Lizenzgeber.
+      Sie lizenzieren einen Teil ihrer Urheberrechte exklusiv an den Verwerter.
+      Damit kann der Urheber nicht mehr über die Notwendigen Rechte an seinen
+      eigenen Arbeiten verfügen, die eine freie Lizenz erfordert. Deshalb darf
+      ein Mitglied einer Verwertungsgesellschaft auch keine Werke adaptieren
+      oder aufführen die unter einer Copyleft Klausel stehen. Die Adaptierung
+      würde sowohl unter die Vertretung der Verwertungsgesellschaft fallen als
+      auch unter der ursprünglichen freien Lizenz stehen. Da die
+      Verwertungsgesellschaften aber einen Alleinvertretungsanspruch haben,
+      funktioniert das nicht.
+      <p>
+        In der Praxis kann eine widerrechtliche Nutzung aber z.B. durch eine
+        nachträgliche Lizensierung beim Urheber des Werkes legitimiert werden.
+        Der Urheber erteilt also dem Mitglied einer Verwertungsgesellschaft
+        eine einzelne nicht exklusive Lizenz, die neben der freien Lizenz
+        besteht und erhält eine Vergütung wie sie bei Verstößen gegen die
+        Verwertungsrechte üblich ist.
+      </p>
+      <p>
+        Die Inkompatibilität betrifft alle deutschen Verwertungsgesellschaften
+        in Kombinationen mit allen CC Lizenzen, wie auch die FAL.<a href=
+        "#citations"><span class="zitatnummer">72</span></a><br>
+        Im Einzelfall kann man die jeweilige Verwertungsgesellschaft dazu
+        befragen. Auf den Webseiten von VG Media, GEMA und VG-Wort wird
+        zumindest auf die Möglichkeit verwiesen, sich mit der jeweiligen Lizenz im
+        Einzelfall auseinander zu setzen. Bisher haben die genanten
+        Gesellschaften aber auch Lizenzen mit dem NC, also nichtkommerziellen
+        Zusatz abgelehnt.
+      </p>
+      <p>
+        Liste der inkompatiblen Verwertungsgesellschaften:
+      </p><ul>
+      <li>
+        GEMA 
+      </li>
+      <li>
+        GVL 
+      </li>
+      <li>
+        VG-Wort 
+      </li>
+      <li>
+        VG Bild - Kunst 
+      </li>
+      <li>
+        VG Musikedition 
+      </li>
+      <li>
+        GÜFA 
+      </li>
+      <li>
+        VFF 
+      </li>
+      <li>
+        VGF 
+      </li>
+      <li>
+        GWFF 
+      </li>
+      <li>
+        AGICOA 
+      </li>
+      <li>
+        VG Media 
+      </li>
+      <li>
+        VG TWF  
+      </li>
+      <li>
+        GWVR
+      </li>
+	  </ul>
+      <p>
+        Es gibt sowohl politische wie auch wirtschaftliche Bestrebungen, die
+        Kompatibilität herzustellen. Einerseits enthält die EU-Richtlinie
+        2014/26/EU, die zur Vereinheitlichung des Lizenzgeschäfts im
+        Binnenmarkt Europa gedacht ist, auch einen Passus, der dem Urheber
+        contra den Verwertungsgesellschaften Rechte an der nicht kommerziellen
+        Verwendung einräumen soll.<a href="#citations"><span class=
+        "zitatnummer">74</span></a>
+      </p>
+      <p>
+        Andererseits gibt es Verwertungsgesellschaften in anderen Ländern,
+        die bereits eine Parallelizensierung zulassen. Das ist zum Beispiel bei
+        der dänischen KODA der Fall, die die kommerzielle Zweitverwertung
+        (z.B. Radio) auch dann übernimmt, wenn das Stück vorher unter der
+        CC-BY-NC im Internet veröffentlicht wurde.<a href=
+        "#citations"><span class="zitatnummer">75</span></a>
+      </p>
+      <p>
+        Die gängige Argumentation der Verwertungsgesellschaften ist, die
+        Hochrechnungen der Nutzungen nur pro Künstler, und nicht pro Werk,
+        abzustufen. Die Gegner behaupten, diese Abstufung wäre technisch
+        mittlerweile möglich und die Weigerung bloß ein Machtspiel. Den
+        Beweis möchte die Stiftung VG C3S antreten, eine neugegründete
+        genossenschaftliche Verwertungsgesellschaft, die gerade auf ihre
+        Zulassung vom Deutschen Patent und Markenamt wartet (Stand 12/2015).
+        Den Schwung der Umsetzung der EU Richtlinie nutzend möchte die C3S
+        nicht weniger als eine europaweite Verwertungsgesellschaft sein, die
+        Künstler für einzelne Werke vertritt. Momentan möchte sich die C3S
+        allerdings auf die Musikbranche beschränken.<a href=
+        "#citations"><span class="zitatnummer">76</span></a>
+      </p> <div id="linkderiv">
+      <h3>
+        Vorgehensweise bei der Lizenzwahl
+      </h3>
+     </div>
+      <h4>
+        <a href="javascript:toggle('einzelautor')">Als Einzelautor ↓</a>
+      </h4>
+      <div id="einzelautor" style="DISPLAY: none">
+        Die Vorgehensweise der Lizenzwahl als Einzelautor ist einfacher als die
+        bei Gruppenprojekten. Trotzdem sollte die Lizenz gut überdacht werden,
+        da sie nicht wieder zurückgenommen werden kann. Das betrifft zwar
+        nicht unbedingt nachfolgende eigene Werke, weil diese wieder unter
+        einer anderen Lizenz oder unter ‚alle Rechte vorbehalten‘
+        veröffentlicht werden können. Die Freigabe für ein Ursprungswerk
+        bleibt aber bestehen. Grundsätzlich sollten folgende Fragen geklärt
+        sein:
+        <h5>
+          Besitze ich alle Rechte am Werk das ich veröffentlichen möchte?
+        </h5>Möglicherweise haben hier Dritte ebenfalls Rechte, wie zum
+        Beispiel das Recht am eigenen Bild - wenn man jemand fotografiert hat
+        und diese Fotografie veröffentlichen möchte.
+        <h5>
+          Verstößt das Werk inhaltlich gegen geltendes Recht?
+        </h5>Es sollte klar sein, dass man bei einer Veröffentlichung immer
+        auch Verantwortung über das Verfasste übernimmt. Im künstlerischen
+        Bereich gelten durch das Grundrecht auf Kunstfreiheit ggf. größere
+        Freiräume.
+        <h5>
+          Welche Rechte möchte ich vorbehalten?
+        </h5>Wenn das Werk vom Lizenzgeber selbst kommerziell genutzt werden soll, besteht die
+        Möglichkeit, die Lizenz mit der NC-Klausel oder gar ND-Klausel
+        einzuschränken: CC-BY-NC-SA oder CC-BY-NC-ND. Kommerzielle Nutzung
+        bzw. Weiterentwicklung sind dann für Lizenznehmer rechtlich ausgeschlossen. Dies ist
+        aber ein zweischneidiges Schwert, da damit gleichzeitig die Nutzbarkeit
+        und damit Reichweite eingeschränkt wird. Das ist vor allem im
+        deutschen Rechtsraum der Fall, wo kommerzielle Nutzung sehr weit
+        ausgelegt wird. Interoperabilität von Produkten und Systemen ist nur
+        möglich, wenn auf die NC und ND-Klausel verzichtet wird. Möchte man
+        mit seinem Designentwurf einen Standard oder ein erweiterbares System
+        schaffen, was Andere dazu inspiriert, kompatible Zubehörteile zu
+        entwerfen, dann muss zumindest der Schnittstellen -Teil des Entwurfs
+        ohne NC und ND—Klausel verfügar sein. Die Unterteilung des Werkes in
+        mehrere Teilbereiche unter unterschiedlichen Lizenzen ist möglich. Die
+        internationale Gesellschaft "freedom defined" schließt auf ihrer Seite
+        nonkommerzielle Lizenzen für die Verwendung für „free cultural
+        works“ aus.<a href="#citations"><span class=
+        "zitatnummer">77</span></a> Eine Kollaboration von Designern ist nur
+        möglich, wenn auf die NC und ND Klausel verzichtet wird, oder eine
+        anderweitige Zusatzvereinbarung zwischen den beteiligten Urhebern
+        vereinbart wird.
+        <h5>
+          Was möchte ich mit der Veröffentlichung erzielen?
+        </h5>Manche Veröffentlichungen zielen auf Reichweite, Medienecho, auch
+        wenn das nicht das erklärte Ziel von freien Lizenzen ist. Es sollte
+        allerdings klar sein, dass eine Einschränkung der kommerziellen
+        Nutzung auch von Derivaten die mediale Reichweite einschränken. Ist
+        das Ziel, die Werke im Sinne von ‚free cultural works‘ einer
+        breiten Öffentlichkeit zugänglich zu machen, ist eine Lizenz mit
+        Share Alike unabdingbar. Die FAL ist eine solche Lizenz und aufgrund
+        der geringeren Rechtsförmlichkeit die besser verständliche Wahl. Legt
+        man Wert auf eine weite Internationalisierung ist die CC-BY-SA aber die
+        sicherere Wahl.
+        <h5>
+          Ist das Werk eine Beurteilung, Meinung oder ein Gutachten?
+        </h5>Der Zweck von Kolumnen, Leitartikeln, Meinungen, Gutachten oder
+        Zeugnissen ist ein anderer als der eines ästhetischen oder technischen
+        Entwurfs oder einer Anleitung. Hauptzweck einer Lizenz für diese Art
+        der Veröffentlichung ist die freie, unveränderte Verbreitung, bei
+        gleichzeitiger Attributionspflicht: CC-BY-ND oder GNU Verbatim Copying
+        License. In der Regel macht es Sinn, die Weitergabe auch für den
+        kommerziellen Bereich zu erlauben, insbesondere wenn man Wert auf eine
+        möglichst große Verbreitung legt. Da eine Meinung aber einen sehr
+        persönlichen Gedanken des Urhebers darstellt, empfiehlt sich eine
+        Einschränkung von Derivaten, Veränderungen. Diese Einschränkung in
+        der Lizenz ist selten ein Problem für Andere Menschen, da eine
+        ähnliche Meinungsäußerung eines Anderen normalerweise nicht durch
+        das Urheberrecht einschränkbar ist. Die Open Access Bewegung, vertritt
+        ein ähnliches Modell, lediglich eine Garantie des offenenen Zugangs
+        zu geben, aber Derivate und anhängende Rechte nicht zu gewähren. Dort
+        liegt aber der Schwerpunkt auch auf wissenschaftlichen Publikationen
+        und nicht auf kulturellen Arbeiten wie bei freedom defined.
+      </div>
+      <h4>
+        <a href="javascript:toggle('gruppenautor')">Gemeinschaftliche Projekte
+        ↓</a>
+      </h4>
+      <div id="gruppenautor" style="DISPLAY: none">
+        Bei Projekten mit mehreren Co-Autoren treten neben den das Werk
+        betreffenden Gesichtspunkten noch andere auf. In erster Linie möchte
+        man sicherstellen, dass alle beteiligten Co-Autoren gleichermaßen
+        Zugriff auf das Werk haben und gleichermaßen profitieren können. Dazu
+        reicht eine bloße Veröffentlichung der Ergebnisse unter einer Open
+        Source Lizenz oftmals nicht aus, sondern hier kommt Wettbewerbsrecht
+        ins Spiel, also Markenregister, Geschmacksmuster, Patente. Zum
+        Beispiel: Unter welchem Namen / Logo tritt die Gruppe auf? Ist dieser
+        Name dann Teil des Werkes oder muss es nicht viel mehr getrennt
+        betrachtet werden? Auch die Domain einer Webseite für das Projekt mit
+        grafischem Inhalt ist eine andere Kategorie als das Werk selber.
+        <h5>
+          Der Fall Arduino LLC gegen Arduino S.R.L.
+        </h5>Ein prominenter Fall hinsichtlich Auswirkungen von
+        Wettbewerbsrecht, ist das, was mit dem Projekt Arduino passiert ist. Das
+        Arduino Projekt wurde von fünf Partnern gegründet ,um eine Open
+        Source Soft- und Hardware Plattform zu entwickeln.<br>
+        Es wurden unterschiedliche, passende Lizenzen gewählt: Für die
+        Software die LGPL, eine sehr freizügige, kommerziell nutzbare
+        Copyleft-Lizenz. Für die Hardware die CC-SA, also freies kopieren
+        unter Copyleft, solange die Kopie nicht Arduino heißt. Eine
+        Markenanmeldung des Namens „Arduino“ in den USA. Das Arduino
+        Konzept ging wirtschaftlich auf. Der einzige Hersteller, der dem Namen
+        nach originale Arduinos herstellen durfte, war die italienische Firma
+        Smart Projects S.R.L., die der Mitgründer Gianluca Martino
+        betrieb.<br>
+        Das Wachstum der eigenen Platinenfirma konnte aber nicht dem
+        internationalen Wachstum der Arduinoplattform selber mithalten. Vier
+        der Gründer waren sich einig, dass die Produktion dezentral auf
+        verschiedenen Kontinenten stattfinden sollte, um der globalen
+        Reichweite des Arduinoprojekts gerecht zu werden. Gianluca Martino
+        hatte sich aber währenddessen, ohne Mitwissen der anderen Gründer, in
+        Italien die Markenrechte am Namen Arduino gesichert. Das führte zu der
+        jetzigen Situation, dass in Europa nur die italienischen Produkte den
+        Namen Arduino tragen dürfen, in den USA dagegen nur jene welche von
+        der Arduino LLC authorisiert wurden. Die Produkte von Arduino LLC
+        heißen in Europa dagegen ‚Genuino‘.<br>
+        Das sorgt für Verwirrung: Beide Firmen betreiben getrennte voneinander
+        Webseiten, ardiono.cc und arduino.org welche zu guter letzt auch
+        unterschiedliche Softwareversionen anbieten: 1.6.5 und 1.7.6. - Dabei
+        ist die höhere Versionsnummer aber kein Garant für eine
+        Weiterentwicklung, da scheinbar 
+        und das Verteilen von Versionsnummern zu einer Art Wettbewerb unter den
+        Konkurrenten ausgeartet ist.<a href="#citations"><span class=
+        "zitatnummer">78</span></a>
+        <p>
+          Für ein Projekt wie Arduino ist das fatal. Die Plattform richtet
+          sich schließlich nicht an Fachleute, sondern an Designer und
+          Künstler. Der Streit der beiden Gruppierungen sorgt für erhebliche
+          Unklarheit und Verwirrung für Außenstehende und erhöht die
+          Einstiegshürde beträchtlich.
+        </p>
+        <p>
+          Obwohl Arduino also fast alles richtig gemacht hat, also Lizenzen
+          für Hard- Software und die Markenregistrierung bedacht hatte,
+          stellte es sich als fatal heraus, keine interne vertragliche
+          Regelung zwischen den Urhebern getroffen zu haben bzw. die Regelung der
+          Markenrechte für die EU versäumt zu haben.
+        </p>
+        <p>
+          Klar erreichen die meisten Projekte nicht diese Größe, bzw. wenn
+          der Erfolg winkt, kommen häufig auch die ersten Differenzen. Jedoch ist zu
+          bedenken, dass das Arduino Projekt auch sehr klein angefangen hat und
+          der Zeitraum der Entwicklung von 2008 bis jetzt sogar noch relativ
+          kurz war. Wenn Regelungen nicht zum Projektstart getroffen werden, 
+          dann sollte es nachgeholt werden, spätestens wenn sich Erfolg
+          einstellt. Das Argument, dass die meisten Projekte nicht die Größe
+          eines Arduino Projekts erreichen, ist eher ein Argument gegen das
+          Projekt als eines gegen eine klare Regelung unter Co-Autoren.
+        </p>
+      </div>
+      <h3>
+        Andere Lizenzübersichten
+      </h3>
+      <h4>
+        <a href="javascript:toggle('ccwizard')">Creative Commons
+        Lizenzauswahl-Assistent ↓</a>
+      </h4>
+      <div id="ccwizard" style="DISPLAY: none">
+        Die Creative Commons Society hat einen Assistenten in ihre Seite
+        integriert, der nach der Beantwortung von ein paar Fragen eine passende
+        Lizenz vorschlägt: <br><span class="zitattext"><a href=
+        "http://creativecommons.org/choose/">http://creativecommons.org/choose/</a>
+        <a href="#citations"><span class="zitatnummer">79</span></a></span>
+      </div>
+      <h4>
+        <a href="javascript:toggle('freedomdefined')">Lizenzen für Free
+        Cultural Works ↓</a>
+      </h4>
+      <div id="freedomdefined" style="DISPLAY: none">
+        Die von der Free Software Foundation und der Creative Commons Society
+        anerkannte Organisation Freedom Defined, hat eine detaillierte Liste
+        erstellt:<br> <span class="zitattext"><a href=
+        "http://freedomdefined.org/Licenses">http://freedomdefined.org/Licenses</a>
+        <a href="#citations"><span class="zitatnummer">80</span></a></span>
+      </div>
+      <h4>
+        <a href="javascript:toggle('fsfoverview')">Lizenzübersicht der Free
+        Software Foundation ↓</a>
+      </h4>
+      <div id="fsfoverview" style="DISPLAY: none">
+        Die Initiatoren des GNU Projekts haben eine Liste, die auch
+        Empfehlungen von Lizenzen für physische Objekte enthält: <br> <span class=
+        "zitattext"><a href=
+        "http://www.gnu.org/licenses/license-list.de.html#Designs">http://www.gnu.org/licenses/license-list.de.html#Designs</a>
+        <a href="#citations"><span class="zitatnummer">81</span></a></span>
+      </div>
+      <h4>
+        <a href="javascript:toggle('oshw')">Open Source Hardware Projekt
+        ↓</a>
+      </h4>
+      <div id="oshw" style="DISPLAY: none">
+        Der Kanadier Andrew Plumb hat das OSHW Wiki gestartet um an einer
+        eigenen Lizenzübersicht für technische und elektronische Projekte zu
+        arbeiten. Die Definition ist noch nicht fertig und trägt bisher die
+        Versionsnummer 0.3: <br><span class="zitattext"><a href=
+        "http://clothbot.com/wiki/Open_Source_Hardware">http://clothbot.com/wiki/Open_Source_Hardware</a>
+        <a href="#citations"><span class="zitatnummer">82</span></a></span>
+      </div>
+      <h2>
+        Zum Stand von Open Design
+      </h2>Die Veröffentlichung von Open Design Now liegt nun fast fünf Jahre
+      zurück. Was ist in der Zwischenzeit passiert bzw. was ist der Stand von
+      Open Design heute?
+      <h3>
+        Quantitativ
+      </h3>Eine Antwortmöglichkeit wäre eine quantitative Analyse anhand von
+      Statistiken: Die Creative Commons veröffentlich jedes Jahr einen
+      Jahresrückblick „State of the Commons“<span class=
+      "zitattext"><a href="#citations"><span class=
+      "zitatnummer">83</span></a></span> mit statistischen Zahlen
+      über die unter CC Lizenzen veröffentlichten Werke.
+      Die Zahlen zeigen ein beeindruckendes Wachstum. Die Anzahl der unter
+      einer CC Lizenz veröffentlichten Werke ist von 140 Millionen im Jahr
+      2006 auf über 1.1 Milliarden in 2015 gestiegen. Der Anteil an Lizenzen
+      die für freie kulturelle Werke zugelassen sind, also kommerzielle
+      Nutzung erlauben, ist 64%. 2015 wurden sogar 10 Millionen gänzlich
+      gemeinfreie Werke veröffentlicht, beinahe der doppelte Betrag vom
+      Vorjahr 2014.<p> Doch die Zuordnung dieser Zahlen zu Open Design gestaltet
+      sich als schwierig. Die CC unterscheidet zwischen „images, open
+      educational ressources, research, videos, audio tracks, texts und
+      other“. Die Werke in den Kategorien Forschung, Bildung und Andere
+      ergeben zusammen lediglich 0,3% der statistisch erfassten Werke, was aber
+      immerhin 1,5 Millionen sind. </p><p>Von thingiverse.com als größter Plattform
+      für 3D Druck Entwürfe gibt es leider keine aktuellen Statistiken. Aber
+      2013 wurde die Marke von 100.000 Modellen gebrochen, mit einem
+      exponentiellen Wachstum von zuletzt 20.000 im Monat..<span class=
+      "zitattext"><a href="#citations"></a><a href="#citations"><span class=
+      "zitatnummer">84</span></a></span>
+      <p>
+        Die Analyse, was denn davon nun Open Design ist, war meine erste Idee
+        für diese Arbeit. Glücklicherweise haben mich aber Professoren,
+        Kommilitonen und die Recherche rund um das Thema, von solch einer trockenen aber
+        mammutgroßen statistischen Analyse abgebracht. Viel interessanter ist
+        nämlich die qualitative Betrachtung:
+      </p>
+      <h3>
+        Der Nutzen von offenen Plattformen für Open Design
+      </h3>Offene Plattformen sind eine Infrastruktur, die für die Verbreitung
+      von Open Design eine Schlüsselstellung inne hat. Zukunftsvision,
+      Manifeste und rechtliche Sicherheit wie Lizenzen, Gesellschaften sind
+      nicht Werkzeuge, sondern nur die theoretische Basis dafür, dass ein
+      praktisches Arbeiten an offenen Entwürfen entstehen kann.
+      <p>
+        Michael Avital, ein Co-Autor von Open Design Now hat eine
+        Kategorisierung in seinem Artikel<span class=
+        "zitattext"><a href="#citations"></a><a href="#citations"><span class=
+        "zitatnummer">85</span></a></span> vorgenommen. Das Modell nennt vier
+        Grundlagen, die vorhanden sein müssen, damit Open Design stattfinden
+        kann: 
+		<ul>
+			<li>Der „Object layer“, also die Baupläne und Skizzen eines
+			Designentwurfs. 
+			<li>Der „Process layer“ umfasst Produktionsmethoden und
+			Maschinen. 
+			<li>Der „Practice layer“ betrifft den Umgang, Prozesse und
+			die Regeln von Open Source, Standards in einer Kultur des Teilens. 
+			<li>Der
+        „Infrastructure layer“ sind die Plattformen und Institutionen die
+        Open Design Prozesse praktisch ermöglichen.
+		</ul>
+		
+      </p>
+      <p>
+        Die Ergebnisse der Untersuchung in Teil 2 dieser Arbeit legen den
+        Schluss nahe, dass die Plattformen mehr versprechen als sie halten.<br> Die
+        Offenheit ist begrenzt, im Fall von Trittbrettfahrer Grabcad überhaupt nicht vorhanden.
+        Im Fall von Thingiverse und Instructables, geht sie mit
+        Rechtsunsicherheit für den Urheber und mit möglicher 
+		Kommerzialisierung durch
+        den Plattformbetreiber einher. Ist die Funktion, die Plattformen als
+        praktisches Element, für Open Design leisten sollen, damit weiterhin
+        ungelöst?
+      </p>
+      <p>
+        Die Untersuchung zeigt, dass es Alternativen gibt. Diese sind, obwohl
+        sie nicht nicht im Fokus standen, trotzdem soweit untersucht worden,
+        dass man sagen kann, dass es hier keine Probleme und Restriktionen in
+        der Art der großen Plattformen gibt. Höchst spannend auch der dezentrale
+		Lösungsansatz an dem das GNU Projekt derzeit arbeitet: <a href="#altthing">↑ Mediagoblin</a> </p> <p>
+		
+		Eine Aussage, welche Plattformen
+        sich hier durchsetzen werden, kann man momentan nicht treffen, es ist
+        noch alles offen. Momentan findet in Bezug auf neue Plattformen, neue
+        Geschäftsmodelle und Märkte, ein ähnlicher Goldrausch statt, wie zur
+        Anfangszeit des Automobils im späten 19. Jahrhundert. Dampf,
+        elektrisch oder interne Verbrennung? Was die Investoren in diese Ideen
+        und Plattformen nicht sehen ist, dass die vielen Ideen, 3D Modelle,
+        Fotos und Anleitungen eigentlich nicht an die Marke des Unternehmens
+        geknüpft sind, sondern im Wesentlichen an die Lizenz. Und die Lizenz
+        kann man nicht kaufen und monetarisieren.
+      </p>
+      <h3>
+        Portabilität von lizensierten Werken
+      </h3>Werke unter einer freien Lizenz sind grundsätzlich portabel. Es ist
+      egal, ob sie auf Github, Thingiverse, Youmagine oder Treasure
+      Island veröffentlicht werden, es ist die Lizenz, die einen Umzug auf
+      eine andere Plattform oder eine gleichzeitige Präsenz auf mehreren
+      Plattformen ermöglicht. Diese Portabilität von Open Source Werken macht
+      die Plattform unerheblich. Sie gibt aber auch ein Werkzeug in die Hände
+      der Nutzer, mit dem sie die Entwicklung der Plattform beeinflussen
+      können. Wenn die Nutzungsbedingungen sich verschlechtern, droht der
+      Plattform ein Abzug von Projekten und geringere Popularität.
+      <p>
+        Für Autoren, die ihre Werke veröffentlichen wollen, spielt die
+        Reichweite der Plattform eine Rolle. Relativ unbekannte, kleinere
+        Plattformen können nicht dieselbe Außenwirkung erzeugen, wie die
+        Veröffentlichung auf der führenden Plattform. Das verkennt
+        allerdings, dass die journalistischen Magazine, wie die Make
+        Zeitschrift, oder Hackaday Blog, als Medium eine weit größere Rolle
+        spielen als ein Katalog wie Thingiverse oder Instructables. 
+		Das liegt einfach daran, dass Leser die nicht nach etwas bestimmtem suchen,
+		eine kuratierte Auswahl von  Artikeln
+		gegenüber einer schwarm-generierten Auswahl bevorzugen.
+		Thingiverse
+        und Instructables versuchen durch ihre Wettbewerbe und die
+        ‚featured‘-Kategorie den Stil eines Magazins nachzuahmen. Ein
+        Blogartikel auf einer anderen Webseite, eine Erwähnung in einem
+        journalistischen Artikel mit Link zu einer der Plattformen hat aber den
+        weitaus größeren Werbeeffekt verglichen mit der Wahl der Plattform.
+        Mit der Entstehung von News-Aggregatoren wie <a href="#andereplattformen">bld3r und Suchmaschinen
+        wie yeggi.com ↑</a> verlagert sich die Außenwirkung möglicherweise noch
+        weiter weg von den Plattformen.
+      </p>
+      <p>
+        Plattformen sind für den offenen Austausch zwar in der Praxis sehr wichtig. Umgekehrt ist
+        die Einflussnahme, die Plattformen dadurch aber auf die Open Design Bewegung haben, nur begrenzt.
+      </p>
+      <h3>
+        Erfahrungen aus der Open Source Software Bewegung
+      </h3>Nicht nur aus der Geschichte von Arduino lassen sich Schlüsse
+      ziehen, auch in der Softwarebranche gibt es lehrreiche Beispiele. Man
+      kann zwar die Open Source Software Bewegung nicht als Modell für die
+      Open Design Bewegung zu einem zukünftigen Zeitpunkt nehmen. Wohl aber
+      kann man aufgrund der längeren Geschichte der Software Bewegung
+      Erfahrungen aus dieser gewinnen.
+      <p>
+        Eine Erfahrung haben die Verteidiger von Proprietären
+        Geschäftspraktiken beim Angriff auf die Wertebasis von Open Source
+        gemacht, wie beim Fall SCO vs Linux. Für Viele Beobachter ist der Fall
+		eng verknüpft mit der marktbeherrschenden Stellung von Microsoft
+		zu dieser Zeit.
+		Microsoft versuchte Anfang
+        der 2000er durch mehrere Methoden Open Source zu diskreditieren, was
+        nachträglich in einem gigantischen Imageschaden, als auch finanziellen
+        Verlusten für Microsoft endete. Man bezog im Klagefall SCO vs Linux
+        Stellung, indem Microsoft den Aktienkurs der Firma SCO durch breite
+        Aktienkäufe unterstützte. Der Fall ist nachzulesen auf dem Open
+        Source Rechtsblog Groklaw:<span class="zitattext"><a href=
+        "#citations"></a><a href="#citations"><span class=
+        "zitatnummer">86</span></a></span> Gleichzeitig schaltete man eine
+        Reihe von Anzeigen, die das damals in der Serverwelt aufkommende Linux
+        unvorteilhaft darstellten.<span class="zitattext"><a href=
+        "#citations"></a><a href="#citations"><span class=
+        "zitatnummer">87</span></a></span><br>
+        SCO hat am Ende keine der vielen Klagen gewonnen und musste Insolvenz
+        anmelden, Microsoft hat in den darauf folgenden Jahren die
+        Marktführerschaft für Server-Betriebssysteme verloren. Auch wenn die
+        Kausalität für letzteres nicht gesichert ist, so hat doch der
+        versuchte Angriff von SCO und Microsofts gleichzeitige Kampagne
+        den Glauben an die Effektivität der damals noch sehr ungewöhnlichen 
+		Lizenz
+        GPL nachhaltig gestärkt.</p><p>
+		Ein ähnlicher Angriff auf die Fundamente von Open Source ist daher
+		in heutigen Zeiten extrem unwahrscheinlich geworden. 
+      </p>
+      <h3>
+        Schleichende Urheberrechtsverschärfungen
+      </h3>Das heutige Immaterialgüterrecht ist größtenteils eine Erfindung
+      des 19. Jahrhunderts. Der Urheberrechtsschutz basiert auf der „Berner
+      Übereinkunft zum Schutze von Werken der Literatur und Kunst“ und ist
+      von 1887. Das „Madrider Abkommen über die internationale Registrierung
+      von Marken“ ist von 1891. Die dem internationalem Patentrecht
+      vorausgehende „Pariser Verbandsübereinkunft zum Schutz des
+      gewerblichen Eigentums“ stammt sogar aus dem Jahre 1883. Damals äußerten
+      Privatleute und sogar Wirtschaftsverbände umfassende Kritik an dieser
+      weitgehenden Monopolgewährungen für bis dahin freies Immaterialgut. Die
+      in den Verträgen festgehaltenen Schutzrechte, wurden in den darauf
+      folgenden 120 Jahren immer wieder ergänzt und angepasst. Meistens ging
+      es dort um eine Erweiterung oder Verlängerung des Monopols. So gab es
+      für das Urheberrechtsgesetz bis heute nicht weniger als acht Änderungen
+      zur Erweiterung der Schutzfrist, von zuerst 30 Jahren auf 50 auf nunmehr
+      70 Jahre, nach dem Tod des Urhebers. Sogar für Musiker, die Stücke eines Anderen zum besten geben, gilt, dass alle Aufnahmen ihrer Interpretation 70 Jahre lang exklusiv geschützt sind.<span class=
+      "zitattext"><a href="#citations"></a><a href="#citations"><span class=
+      "zitatnummer">88</span></a></span><br>
+      <p>
+        Ähnliche Verschärfungen finden auch in den gewerblichen Schutzrechten statt,
+		Patente auf Software, Pflanzen, Geschäftsideen sind alles Ideen, 
+		die seit 1883 dazu gekommen sind.
+		Der Grund für diese Verschärfungen ist die Arbeit der
+        Urheberrechts-Lobbyorganisationen, in Deutschland zum Beispiel die GRUR (Deutsche Vereinigung für gewerblichen Rechtschutz und Urheberrecht e.V)
+        oder Organisationen, deren großzügige Finanzierung durch Urheber und
+        Verleger, eigentlich schon wieder Preis gibt wie gut es um die Tantiemen von
+		Urhebern und Verlegern bereits bestellt ist. </p><p>
+		Auch die Internationale Durchsetzung
+        nimmt zu. So sind mittlerweile auch Entwicklungsländer der
+        internationalen Patent Cooperation Treaty beigetreten und die
+        Durchsetzung wird durch internationale Vernetzung einfacher. Patente
+        sind eine gefragte Handelsware und das Aufkaufen und weiterlizensieren
+        von nicht selbst entwickelten Patenten ist ein anerkanntes
+        Geschäftsmodell.
+      </p>
+      <p>
+        Interessanterweise, kann genau dieser Effekt der fortschreitenden
+        Regulierung einen unerwarteten Nebeneffekt auf die Entwicklung offener
+        Werke haben. Die theoretische Frage, ob man als Designer eher
+        proprietäre Rechte verteidigt oder auf offene Standards setzt, ist
+        irrelevant, weil es kein theoretisches Thema ist, sondern ein
+        praktisches. In der Praxis baut Design und Produktentwicklung immer auf
+        vorherigen Ideen und Eindrücken auf. Durch zunehmende Regulierung wird es aber
+        schwieriger im proprietären Bereich etwas komplett Eigenes, Neues zu
+        schaffen. Wenn aber alles vorhandene reguliert ist, bleibt einem kaum 
+		etwas anderes übrig, als es allein zu versuchen. Der Zugriff auf gemeinsame Standards ist daher ein
+        praktischer Vorteil. Das Copyleft- bzw. Share-Alike-Prinzip, 
+		kompatibel mit dem proprietären Urheberrecht, welches für die freie Verfügbarkeit von
+		Weiterentwicklungen und Derivaten sorgt, sorgt dann
+        dafür, dass aus den einfachen offenen Entwürfen, größere,
+        funktionalere und komplexere Ableger entstehen können.
+      </p>
+      <p>
+        Für Open Source Software hat dies bedeutet: Über 60% der Webseiten im
+        Internet und über 60% der Smartphones und Tablets laufen auf Open
+        Source Software. An diesen riesigen Industrien, die dafür entstanden
+        sind, sieht man auch, dass Open Source keinerlei Probleme darstellt bei
+        der monetären Nutzung. Der Grund für dieses Wachstum von Open Source
+        ist praktischer Natur und nicht aus Image-Gründen. An der
+        hervorgehobenen Stellung von Google, Apple, Facebook kann man nicht
+        erkennen, dass Open Source irgendeine limitierende Auswirkung auf die Prinzipien
+        der Marktwirtschaft gehabt hätte. In einer Open Source Welt, spielt das aber auch
+        keine Rolle, denn nicht die Intentionen eines Unternehmens sind
+        gefragt, sondern die des Individuums das im Unternehmen arbeitet.
+      </p>
+      <h3>
+        Unternehmen als Hüllen
+      </h3> Die Theorie ist, dass Unternehmen in der Regel mit der Absicht von Profit oder
+      Wachstum handeln - Im Auftrag der Besitzer bzw. Investoren und Fonds. Ausführende
+      sind die Mitarbeiter des Unternehmens. Aber sind die Eigeninteressen des
+      Einzelnen denn ähnlich wie die des Unternehmens? <p>Die Entscheidung eines
+      Unternehmens für die Entwicklung auf Basis von Open Source Lizenzen kann
+      für das Unternehmen praktische Gründe haben, nebenbei hat sie aber auch
+      positive Auswirkungen für die beteiligten Mitarbeiter. Durch die
+      Veröffentlichung von Open Source Technologie kann die Verbreitung,
+      Bekanntheit und Anerkennung in professionellem Umfeld steigen. Das
+      billigt dem einzelnen Mitarbeiter eine bedeutendere Rolle zu,
+      ermöglicht aber auch eine größere berufliche Mobilität. Verlässt er das
+      Unternehmen, muss er seine bisher geleistete Arbeit nicht vollständig
+      hinter sich lassen, da das Werk frei bleibt.</p><p> Die Gefahr, dass große
+      Unternehmen sich also am Open Source Pool bedienen und nichts
+      zurückgeben, sollte also nicht überbewertet werden. Auch große
+      Unternehmen bestehen nur aus Mitarbeitern, die auch manchmal im Interesse der
+      Gesellschaft oder in ihrem eigenen Interesse denken und entscheiden. Das
+      ist nicht immer dasselbe wie das Interesse der Investoren und Fonds. In
+      Unternehmen, die viel auf Open Source Technik setzen, gibt es also eine
+      Machtverschiebung, von der Unternehmensführung mehr in Richtung
+      der Mitarbeiter bzw. Individuen. Nutznießer ist die außenstehende Gesellschaft.
+      <p>
+        Wenngleich der Open Source Geist also in der Praxis leider keinen
+        großen Einfluss auf die Positionierung von Großunternehmen hat, so
+        hat er doch Einfluss auf die Art wie Großunternehmen handeln.
+      </p>
+      <h3>
+        Dezentrale Produktion
+      </h3>Wahrscheinlich sind es am Ende doch die Produktionsmethoden, die
+      sich als Bremse für die Entwicklung von Open Design erweisen.
+      <p>
+        Schon der Flugpionier Alberto Santos-Dumont verteilte 1908 Baupläne
+        seines Ultraleichtflugzeugs Demoiselle kostenlos und sah das Fliegen
+        als ‚Geschenk für die Menschheit‘. Der Designer Gerrit Rietveld
+        veröffentliche Bauanleitungen seiner Stühle in der Zeitschrift De
+        Stijl.<a href="#citations"><span class=
+          "zitatnummer">1</span></a> 
+		  Einzelne Nachbauten gab es dennoch nur wenige, nicht nur weil
+        der finanzielle und technische Hintergrund fehlte, sondern auch weil
+        die Produktionsmethoden immer noch Werkzeuge und Vorrichtungen
+        erforderten, die erst in einer Serienproduktion Sinn machten.
+      </p>
+      <p>
+        Generative Fertigung, bzw. dezentrale Produktion sind ein Schlüssel
+        für den Austausch von Entwürfen. Statt der Ware, wird bloß ein
+        Modell übermittelt, statt dem Massenprodukt entsteht ein angepasstes,
+        einzigartiges Produkt. Millionen von Wirtschaftsingenieuren, Supply-Chain Managern, Lifecycle Planern, Sozialwissenschaftlern, Umweltforschern, etc. geben sich Mühe diese Modelle zu planen, berechnen und vorrauszusagen. 
+		<p>Ausgerechnet die Entwicklung von 3D Druckern
+        stagniert, die erst dafür gesorgt hat, dass Plattformen für den
+        Austausch von Produktionsdaten entstanden sind. Die aktuellen FDM 3D
+        Drucker haben nicht die Genauigkeit, Reproduzierbarkeit,
+        Geschwindigkeit und Wirtschaftlichkeit, um den Spritzguss für die
+        dezentrale Produktion abzulösen. Geschweige denn, dass sie sich für
+        etwas anderes als Kunststoffteile eigneten. Die Entwicklung von
+        Technologie passiert in Schüben. Die heutigen generativen
+        Fertigungsverfahren stammen aus den 80ern und 90ern. Der letzte Große
+        Entwicklungsschub waren die ‚Desktop’-Geräte. Also Maschinen, die
+        von den Anschaffungskosten und von der Größe her auf den Schreibtisch
+        passen. Sie basieren auf denselben 80er Jahre Technologien. Eine
+        massentaugliche Ablösung dieser Verfahren ist nicht in Sicht.</p><p> Was ist,
+        wenn die von Designern, Ingenieuren, Wirtschaftswissenschaftlern,
+        Sozialforschern, Politikern, Investoren vielbeschwörte Revolution in
+        der Fertigung noch ein wenig auf sich warten lässt? Oder wenn sie gar
+        ganz anders kommt als man sich das vorgestellt hat? </p><p>Als man 1957 die
+        Boeing 707 vorstellte war sie mit 917km/h Reisegeschwindigkeit das
+        schnellste Passagierflugzeug der Welt, mehr als doppelt so schnell als 
+         noch in den Vierzigern. Jeder Beobachter von damals würde
+        nicht glauben, dass man im Jahr 2011 eine Boeing 787 mit einer
+        Reisegeschwindigkeit von 903km/h vorgestellt hat. Willkommen, wir
+        befinden uns gerade in den 50ern der dezentralen Fertigungsverfahren!
+      </p>
+      <p>
+        Mit kleinen und dezentralen Verfahren wie Lasercutting, CNC-Fräsen und
+        3D Druck lässt sich bislang nur ein Bruchteil der klassisch
+        industriellen Produktionsverfahren ablösen. Bis auf einige wenige
+        plakative Anwendungszwecke wie Prothesen oder Turbinenschaufeln haben
+        generative Verfahren an der globalen Güterproduktion noch keinen
+        nennenswerten Anteil. Dazu funktioniert die gute alte Rohstoffpumpe,
+        die unser globales Produktionssystem antreibt, einfach noch viel zu
+        gut.
+      </p>
+      <p>
+        Betriebswirte und Marketingspezialisten haben den Begriff „Industrie
+        2.0“ und „Industrie 4.0“ geprägt (Ed.: Gab es eigentlich ein 3.0
+        oder habe ich das verschlafen?). Dabei sind große Teile der Welt noch
+        nicht einmal bei Industrie 1.0, also weitestgehend industrialisiert. 
+		Und das wird
+        auch so bleiben, falls nicht die Dezentralisierung schon getrennt von
+        der Technisierung stattfindet. Bloß weil 3D Drucker billiger geworden
+        sind als früher, wird man nicht mit der dezentralen Produktion von
+        Handy-Hüllen in Somalia anfangen.
+      </p>
+      <p>
+        Die Dezentralisierung der Produktionswirtschaft ist eine der größten
+        politischen und gesellschaftlichen Aufgaben vor welcher die Menschheit heute
+        steht. Eine dezentrale Produktion ist eine Chance, den Rohstoffausstoß
+        zu reduzieren indem Bedarfsgerecht produziert wird, ohne Überschuss
+        und übermäßige Lagerhaltung. Automatisierung sorgt für immer
+        weniger Bedarf an körperlicher Arbeit, Dezentralisierung der
+        Produktion würde für eine gerechtere Arbeitsverteilung und eine
+        geringere Massenarmut sorgen. Kulturelle Vielfalt wie auch individuelle
+        Ästhetik kann durch dezentrale Produktion gewinnen, indem
+        maßgeschneiderte Produkte möglich werden, die jeweils in Form und
+        Material abweichen, dennoch auf bewährten Standards basieren.
+      </p>
+      <p>
+        Auch wenn dezentrale Produktion momentan noch der Bremsklotz für eine
+        breitere Open Design Kultur darstellt, ist zu erwarten, dass sie kommen
+        wird. Es wäre nicht verwunderlich, wenn es aber noch mehrere
+        Jahrzehnte dauert, bis die Weichen dafür gestellt sind.
+		Bis dahin wird man sehen, wie sich Open Design in der Zwischenzeit entwickelt.
+      </p>
+      <h2>
+        Anhang
+      </h2>
+      <div id="citations">
+        <h3>
+          Quellen
+        </h3>
+      </div>
+	</div>
+       <p>
+      <iframe src="quellen/index.html" id="quellentab" scrolling="no" name=
+      "quellentab">
+      <p>
+        Your browser does not support iframes.
+      </p></iframe>
+	  
+	 <div id="text"> 
+	  
+      <div id="tabellen">
+        <h3>
+          Tabellen
+        </h3>
+      </div>
+</div>
+    <p>
+      <iframe src="plattformtabelle/index.html" id="plattformtab" scrolling="no" name=
+      "plattformtab">
+      <p>
+        Your browser does not support iframes.
+      </p></iframe>
+    </p>
+	 <p>
+      <iframe src="lizenztabelle/index.html" id="lizenztab" scrolling="no" name=
+      "lizenztab">
+      <p>
+        Your browser does not support iframes.
+      </p></iframe>
+    </p>
+    <div id="text">
+	<div id="hilfsmittel">
+        <h3>
+          Hilfsmittel
+        </h3>
+      </div>
+	  Diese Webseite wurde manuell in Notepad++ erstellt, die Tabellen in Numbers und Apple TextEdit.<br> Grafiken wurden mit GIMP 2.8
+	bearbeitet, sofern nicht per Java-Script generiert. Die Webseite nutzt folgende Java-Script Bibliotheken:
+	  <ul> 
+		<li><a href="https://jquery.com/">jQuery.js Bibliothek der Jquery Foundation</a>
+		<li><a href="http://d3js.org/">D3.js Bibliothek von Mike Bostock</a>
+		<li><a href="http://responsiveslides.com/">Responsiveslides.js  von Viljami Salminen</a>
+		<li><a href="https://gist.github.com/nbremer/6506614">RadarChart.js von N. Bremer</a>
+	</ul>
+	  Die interaktiven Diagramme wurden mit der Java-Script Bibliothek D3 erstellt.
+	  Beispiele:
+	  <ul>
+		<li><a href="http://bl.ocks.org/mbostock/4063570">'Dendrogramm' von Mike Bostock und Jeff Heer</a>
+		<li><a href="http://bl.ocks.org/mbostock/7607535">'Zoomable Circle Packing Chart' von Mike Bostock und Jeff Heer</a>
+		<li><a href="http://www.visualcinnamon.com/2015/10/different-look-d3-radar-chart.html">Radar Diagramm von N. Bremer</a>
+	  </ul>
+	  
+	  <p>17.01.2016 David Burkhardt</p>
+	
+	
+	
+	</div>
+  </body>
+</html>
