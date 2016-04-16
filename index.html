@@ -4,22 +4,19 @@
     <meta name="Autor" content=
     "David Burkhardt">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" href=
-    "css/dipl.css">
-	
-	<script type="text/javascript" src="jquery-2.2.0.min.js"></script>
-	
+    <link rel="stylesheet" type="text/css" href="css/dipl.css">
+	<link rel="stylesheet" href="css/jquery.bxslider.css" type="text/css" />
+
 	
     <title>
       Offene Entwurfsplattformen für Designer
     </title>
-	
-	
+
+	<script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 	
 	<!--js zum Ausklappen von Kapiteln-->
-
     <script language="javascript" type="text/javascript">
-
     function toggle(control)
     {
                 var elem = document.getElementById(control);
@@ -32,18 +29,10 @@
                         elem.style.display = "none";
                 }
     }
-        
-
     </script>
 
 	
-	
-	
-	
     <!--jquery script zur Erstellung eines automatischen Inhaltsverzeichnisses-->
-
-   
-</script>
     <script type="text/javascript">
     $(document).ready(function() {
             $("#toc").append('<h3>Inhalt:<\/h3>')
@@ -58,8 +47,6 @@
 	
 	
 	<!--jquery script zum wieder nach oben scrollen-->
-
-
     <script type="text/javascript">
             $(document).ready(function(){
 
@@ -90,6 +77,21 @@
 
                 });
     </script>
+	
+	
+	<!--jquery bx-slider script für die Bilder-->	
+	<script type="text/javascript">
+			  $(document).ready(function(){
+				
+				$('.bxslider').bxSlider({
+				  mode: 'fade',
+				  captions: true,
+				   slideWidth: 980
+				});
+			  });
+	</script>	
+	
+
   </head>
   <body>
     <div id="text">
@@ -640,11 +642,61 @@
         <a href="#citations">Beispiele auf thingiverse.com <span class=
         "zitatnummer">12</span></a>
       </h4>
-    </div><iframe src="thingiversegallery/index.html" id="gallery" scrolling=
-    "no" name="gallery">
-    <p>
-      Your browser does not support iframes.
-    </p></iframe>
+    </div>
+	<div id="centered">
+<ul class="bxslider">
+  
+   <li>
+          <img src="thingiversegallery/01.jpg" alt="" />
+           Artikel auf der Thingiverse Startseite. Hier sind manchmal auch gesponserte Artikel und Wettbewerbe zu finden. (siehe Bild 10) 
+        </li>
+		 <li>
+          <img src="thingiversegallery/11.jpg" alt="" />
+           Möbel: <br>Der Schwerpunkt liegt auf 3D druckbaren Objekten. Objekte größer als ca. 20x20x20cm oder für andere Herstellungsverfahren sind eher selten auf Thingiverse. 
+        </li>
+        <li>
+          <img src="thingiversegallery/02.jpg" alt="" />
+           Die Suche nach Objekten. <br>Thingiverse ist die derzeit größte Datenbank für 3D-druckbare Objekte die unter Open Source Lizenzen verfügbar sind. 
+        </li>
+        <li>
+          <img src="thingiversegallery/03.jpg" alt="" />
+           Objektansicht: <br> Rechts sind Funktionen zum persönlichen Interagieren. Diese sind, bis auf die Downloadfunktion, nur mit einem Thingiverse-Account nutzbar. Unter den Objektbildern sind Reiter zur Anzeige alle Objektbestandteile und Attribute.  
+        </li>
+		    <li>
+          <img src="thingiversegallery/04.jpg" alt="" />
+           Objekt Details: <br> Etwas weiter unten auf einem Objekteintrag steht eine Objektbeschreibung und Hinweise vom Author. Rechts befinden sich Statistiken und Attribute des Objekts. 
+        </li>
+		    <li>
+          <img src="thingiversegallery/05.jpg" alt="" />
+           Objekt Dateien:<br> Im Reiter "Thing Files" befinden sich die 3D Modelle und ggf. andere CAD-Daten oder begleitende Dateien.  Rechts ist die Lizenz angegeben unter der das Objekt bearbeit- und vervielfältigbar ist.
+		  
+        </li>
+		    <li>
+          <img src="thingiversegallery/06.jpg" alt="" />
+           Kommentare: <br> Im Reiter 'Comments' auf der Objektseite befinden sich Kommentare, Diskussionen und Hinweise von Nutzern. 
+        </li>
+		    <li>
+          <img src="thingiversegallery/07.jpg" alt="" />
+           Made: <br>  Nutzer die das Objekt gebaut haben können hier Fotos davon veröffentlichen. In der Regel machen das nur ein Bruchteil der Nutzer die das Teil heruntergeladen haben. In diesem Fall wurden bei 42975 Downloads in der Folge 128 Bilder hochgeladen. 
+        </li>
+		    <li>
+          <img src="thingiversegallery/08.jpg" alt="" />
+           Sammlungen: <br>  Wie eine Playliste für Medien können Nutzer Sammlungen anlegen, die sofern nicht anders gewählt, auch gleich für andere einsichtbar sind. 
+        </li>
+		    <li>
+          <img src="thingiversegallery/09.jpg" alt="" />
+           Derivate: <br>  Im Reiter "Remixes" sieht man dass dieser Entwurf zehn Weiterentwicklungen inspiriert hat. Das geht von Vereinfachungen, Stabilitätverbesserung bis zur Integration mit anderen Objekten. 
+        </li>
+		    <li>
+          <img src="thingiversegallery/10.jpg" alt="" />
+           Thingiverse veranstaltet regelmäßig gesponserte Konstruktionswettbewerbe. Hier für ein Produkt des Spielzeugherstellers Thinkfun, der dafür 3D Dateien von einigen ihrer Spielzeugsets als Open Source veröffentlicht hat. 
+        </li>
+</ul></div>
+
+
+	
+	
+	
     <div id="text">
       <h4>
         <a href="javascript:toggle('reprap')">Das Reprap Projekt ↓</a>
@@ -915,11 +967,51 @@
         Github</a><a href="#citations"><span class="zitatnummer">28, 29,
         30</span><br></a>
       </h4>
-    </div><iframe src="githubgallery/index.html" id="gallery" scrolling="no"
-    name="gallery">
-    <p>
-      Your browser does not support iframes.
-    </p></iframe>
+    </div>
+	<div id="centered">
+	<ul class="bxslider">
+  
+   
+          <li>
+          <img src="githubgallery/01.jpg" alt="" />
+           Github Oberfläche 
+        </li>
+        <li>
+          <img src="githubgallery/02.jpg" alt="" />
+           Github ist für Programmcode gedacht. <br>Zunehmend wird Github aber auch zur gemeinsamen Bearbeitung von Texten und anderen Inhalten verwendet. Hier zum Beispiel für das Buch "Open Government" des O'Reilly Media Verlages. 
+        </li>
+        <li>
+          <img src="githubgallery/03.jpg" alt="" />
+           Versionsmanagement: <br> Mit Github kann man unterschiedliche Versionen genau vergleichen, Änderungen zusammenführen und protokollieren, wer, wann, was geändert hat. 
+        </li>
+		    <li>
+          <img src="githubgallery/04.jpg" alt="" />
+           Juan Julián Merelo Guervós auf Github geschriebene Novelle "Hoborg". <br> Der spanischstämmige Author hat sein "Dieselpunk" -Manuskript öffentlich geschrieben und wurde dabei von vier freiwilligen 'Lektoren' unterstützt. Das fertige Buch ist mittlerweile bei Amazon erhältlich. 
+        </li>
+		    <li>
+          <img src="githubgallery/05.jpg" alt="" />
+           Arbeitsfluss:<br> Abwandlungen, Änderungen und Zusammenführungen des "Hoborg"-Manuskripts wurden von Github visualisiert.
+		  
+        </li>
+		    <li>
+          <img src="githubgallery/06.jpg" alt="" />
+           theguardian.com<br> Die britische Tageszeitung verwaltet mit Github ihre Webseite.  
+        </li>
+		    <li>
+          <img src="githubgallery/07.jpg" alt="" />
+            3D Inhalte: <br> Dateien im für 3D Druckdaten gebräuchlichen .STL Format können angezeigt und verglichen werden. Hier ist der gleichbleibende Teil durchsichtig, der alte Teil rot und die Änderungen in grün, dargestellt. 
+        </li>
+		    <li>
+          <img src="githubgallery/08.jpg" alt="" />
+           Sonderformate: <br> Github hat neben Code und Textbearbeitung auch eine wachsende Zahl von Plugins für Sonderformate. Hier zum Beispiel für das Landkartenformat GEOJSON. Auch Photoshop-Dateien oder SVGs können angezeigt und verglichen werden. 
+        </li>
+		    <li>
+          <img src="githubgallery/09.jpg" alt="" />
+           Lokale Installation: <br>  Github ist die einzige Plattform, die eine extra Software vorraussetzt. Man braucht das Kommadozeilenprogramm Git, oder eine git-basierende Software. Für den Einstieg entwickelt Github an einer eigenen Software für Windows und OSX die mittlerweile beta-Stadium erreicht hat. 
+        </li>
+</ul></div>
+	
+	
     <div id="text">
       <h4>
         <a href="javascript:toggle('git')">Die Git Versions-Verwaltung ↓</a>
@@ -1098,11 +1190,52 @@
         Instructables</a><a href="#citations"><span class="zitatnummer">36,
         37</span><br></a>
       </h4>
-    </div><iframe src="instructablesgallery/index.html" id="gallery" scrolling=
-    "no" name="gallery">
-    <p>
-      Your browser does not support iframes.
-    </p></iframe>
+    </div>
+<div id="centered">
+		<ul class="bxslider">
+  
+   
+           <li>
+          <img src="instructablesgallery/01.jpg" alt="" />
+           Hervorgehobene Artikel und Editoriale auf der Startseite von Instructables.
+        </li>
+        <li>
+          <img src="instructablesgallery/02.jpg" alt="" />
+           Die meisten Instructables Artikel sind Bauanleitungen für Objekte. 
+        </li>
+        <li>
+          <img src="instructablesgallery/03.jpg" alt="" />
+           Interaktionsmöglichkeiten<br> Die Möglichkeiten als angemeldeter Nutzer mit Objekten und Autoren zu interagieren sind weitestgehend identisch zu denen von Thingiverse. Es gibt Sammlungen, Bilder von Umsetzungen, man kann die Objekte für später markieren, an andere schicken und dem Autor folgen. 
+        </li>
+		    <li>
+          <img src="instructablesgallery/04.jpg" alt="" />
+           Open Source Design<br> Der "Universal Nut Sheller" von "The Full Belly Project" ist ein Open Source Entwurf von Jock Brandis von 2003. Der Entwurf wurde drei Jahre später auf dem gerade erst entstandenen Instructables veröffentlicht. 
+        </li>
+		    <li>
+          <img src="instructablesgallery/05.jpg" alt="" />
+           Möbel aus Recyclingholz<br> Der Architekt Will Holman hat seit 2008 62 Entwürfe auf Instructables veröffentlicht. Sein Buch "Guerilla Furniture Design" enthält 54 dieser Entwürfe und ist 2015 beim Storey Publishing Verlag erschienen.
+		  
+        </li>
+		    <li>
+          <img src="instructablesgallery/06.jpg" alt="" />
+           Eine Anleitung besteht aus Texten, nach Arbeitsschritten gegliedert... 
+        </li>
+		    <li>
+          <img src="instructablesgallery/07.jpg" alt="" />
+           ... und aus Bildern mit Markierungen. Gegebenenfalls benötigte 3D-Dateien, Grafiken oder Code können als einzelne Dateien angehängt werden.<br>
+			Der ganze Artikel ist jeweils auch als PDF veröffentlicht. 
+        </li>
+		    <li>
+          <img src="instructablesgallery/08.jpg" alt="" />
+           Geschäftsmodell: <br>  Instructables wird durch Sponsoring finanziert. Man veranstaltet Schreib- und Bau-Wettbewerbe und schließt Partnerschaften, wie hier abgebildet mit der Halbleiterfirma Intel. 
+        </li>
+</ul>
+</div>
+	
+	
+	
+	
+	
     <div id="text">
       <h4>
         <a href="javascript:toggle('squid')">Squid Labs ↓</a>
@@ -1234,11 +1367,35 @@
       <h4>
         <a href="javascript:toggle('beispielinstruct')">Beispiele Grabcad</a>
       </h4>
-    </div><iframe src="grabcadgallery/index.html" id="gallery" scrolling="no"
-    name="gallery">
-    <p>
-      Your browser does not support iframes.
-    </p></iframe>
+    </div>
+<div id="centered">
+		<ul class="bxslider">
+  
+   
+          <li>
+          <img src="grabcadgallery/01.jpg" alt="" />
+            Grabcad ist ein Hersteller von Software für Ingenieure.
+        </li>
+        <li>
+          <img src="grabcadgallery/02.jpg" alt="" />
+            Grabcad hat eine große Bibliothek an 3D Modellen <br>Die Modelle sind zwar "free" anzusehen, aber nur für Grabcad Mitglieder herunterladbar. Da die Modelle außerdem unter keiner Lizenz stehen, sind sie nicht einfach weiter verwendbar.   
+        </li>
+		 <li>
+          <img src="grabcadgallery/03.jpg" alt="" />
+            Grabcad wirbt mit über einer Million CAD-Dateien.<br> Bei genauerem Hinsehen ist der überwiegende Teil aber für 'computer generated' Grafik und nicht für Konstruktion und Herstellung von Bauteilen. CG, Das sind Modelle mit hohem Detailreichtum, Texturen, Beleuchtung etc., aber meist ohne mechanische Eignung (non-manifold), korrektem Maßstab oder gar getesteter Herstellung.
+		   
+        </li>
+        <li>
+          <img src="grabcadgallery/04.jpg" alt="" />
+            Konstruktionswettbewerbe: <br> Das Hauptgeschäft neben der eigenen 'Workbench'-Software ist Outsourcing von Konstruktionen für Sponsorfirmen.   
+        </li>
+		    <li>
+          <img src="grabcadgallery/05.jpg" alt="" />
+            Blog für Ingenieure <br> Das Angebot der Webseite richtet sich eindeutig an CAD-Ingeniere.
+        </li>
+	   
+</ul>
+</div>
     <div id="text">
       <h4>
         <a href="javascript:toggle('grabuebersicht')">Schwerpunkt ↓</a>
@@ -1329,8 +1486,7 @@
           Grabcad Nutzer dazu zwingt, eigene Modelle hochzuladen, lädt zum
           kopieren von echten offenen Plattformen ein. Die Ergebnisse sind dann
           leider nicht mehr frei Open Source, was in einigen Fällen ein
-          Verstoß gegen die Lizenzbedingungen der Open Source Werke ist. &lt; 
-          /p&gt;
+          Verstoß gegen die Lizenzbedingungen der Open Source Werke ist.
         </p>
       </div>
       <h4>
