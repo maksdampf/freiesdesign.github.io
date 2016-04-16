@@ -2,7 +2,8 @@
 
 This is the Website of the Diploma Thesis of David Burkhardt, aka MaksDampf.
 
-Copyright © 2016 David Burkhardt 
+Copyright © 2016 David Burkhardt
+
 Copyleft: This is a free work, you can copy, distribute, and modify it under the terms of the Free Art License 
 http://artlibre.org/licence/lal/en/
 
